@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../styles/About.css";
-import aboutImg from "../assets/react.svg"; // replace with your image
 
 const About = () => {
   const aboutRef = useRef(null);

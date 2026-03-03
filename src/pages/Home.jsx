@@ -4,7 +4,7 @@ const Navbar = lazy(() => import("../components/Navbar"));
 const Hero = lazy(() => import("../components/Hero"));
 const Skills = lazy(() => import("../components/Skills"));
 const About=lazy(()=>import("../components/About"));
-const SkillsMap=lazy(()=>import("../components/SkillsMap"));
+const Service=lazy(()=>import("../components/Service"));
 
 
 const Home = () => {
@@ -23,6 +23,9 @@ const Home = () => {
 
       <Suspense fallback={<div className="loader">Loading Skills...</div>}>
         <Skills />
+      </Suspense>
+      <Suspense fallback={<div className="loader">Loading Skills...</div>}>
+        <Service />
       </Suspense>
     
     </>
