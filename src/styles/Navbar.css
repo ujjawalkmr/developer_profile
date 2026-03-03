@@ -1,0 +1,120 @@
+/* Navbar Main */
+.navbar {
+  width: 100%;
+  background: radial-gradient(circle at 20% 20%, #011421, #0b1e2d 60%, #071019 100%);
+    box-shadow:0 30px 80px rgba(0,0,0,0.6);
+height: 80px;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  /* background: #071019; */
+}
+html {
+  scroll-behavior: smooth;
+}
+/* Container */
+.navbar-container {
+  max-width: 100%;
+  margin: auto;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+}
+
+.logo-text {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #7b61ff, #00e0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+  transition: 0.3s ease;
+  
+}
+
+.logo-text:hover {
+  transform: scale(1.05);
+}
+/* Desktop Menu */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links li {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-links li:hover {
+  color: #00bfff;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100vh;
+  background: #222;
+  transition: 0.3s ease-in-out;
+  padding-top: 80px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 15px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid #333;
+}
+
+.sidebar li:hover {
+  background: #333;
+}
+
+/* When active */
+.sidebar.active {
+  right: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}

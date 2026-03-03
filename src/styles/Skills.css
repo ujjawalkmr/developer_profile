@@ -1,0 +1,145 @@
+.skills {
+  /* background: #071019; */
+  padding: 100px 0;
+}
+
+.skills-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+/* LEFT SIDE */
+.skills-left {
+  flex: 1;
+  opacity: 0;
+  transform: translateX(-80px);
+  transition: all 0.8s ease;
+}
+
+.skills-left.animate-left {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.skills-heading {
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: white;
+}
+
+/* GRID */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.skill-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: 0.3s ease;
+  border: 1px solid rgba(123, 97, 255, 0.2);
+}
+
+.skill-card:hover {
+  transform: translateY(-8px);
+  border-color: #7b61ff;
+  box-shadow: 0 10px 25px rgba(123, 97, 255, 0.3);
+}
+
+.skill-card h3 {
+  color: #7b61ff;
+  margin-bottom: 15px;
+}
+
+.skill-card p {
+  color: #ccc;
+  font-size: 14px;
+  margin: 5px 0;
+}
+/* Skill item row */
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: #ddd;
+  transition: 0.3s;
+}
+
+.skill-item:hover {
+  transform: translateX(5px);
+  color: white;
+}
+
+.skill-icon {
+  font-size: 20px;
+}
+/* Optional: brand colors */
+.react { color: #61dafb; }
+.flutter { color: #42a5f5; }
+.js { color: #f7df1e; }
+.java { color: #f89820; }
+.node { color: #3c873a; }
+.mongo { color: #4db33d; }
+.mysql { color: #00758f; }
+.postgres { color: #336791; }
+.aws { color: #ff9900; }
+.git { color: #f1502f; }
+.docker { color: #0db7ed; }
+.gcloud { color: #4285f4; }
+.microservices{color: #9b59b6;}
+.loadbalancer{color: #e67e22;}
+.jira { color: #0052cc; }      
+.postman { color: #ff6c37; }
+
+
+/* RIGHT SIDE */
+.skills-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateX(80px);
+  transition: all 0.8s ease;
+  /* background-color: #0db7ed; */
+  padding-top: 40px;
+  height: 400px;
+}
+
+.skills-right.animate-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.skills-right img {
+  width: 100%;
+  height: 400px;
+  max-width: 500px;
+  border-radius: 20px;
+  /* box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); */
+  /* background-color: #3c873a; */
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .skills-container {
+    flex-direction: column;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-heading {
+    text-align: center;
+  }
+}
