@@ -1,0 +1,482 @@
+.projects-container {
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-bottom: 60px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Header Animation */
+
+.projects-header {
+  margin-bottom: 40px;
+  transform: translateY(60px);
+  opacity: 0;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+.projects-header.header-show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.projects-header h2 {
+  color: #f8f7f9;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 28px;
+}
+
+.projects-header p {
+  color: #bdafe4;
+  max-width: 800px;
+  line-height: 1.6;
+}
+
+/* Grid */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+/* Project Card */
+
+.project-card {
+  background: radial-gradient(circle at 20% 20%, #011421, #0b1e2d 60%, #071019 100%);
+  padding: 40px 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor:pointer;
+
+  /* RIGHT SIDE ANIMATION */
+  transform: translateX(120px);
+  opacity: 0;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+/* When visible */
+
+.projects-container.show .project-card {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Hover */
+
+.project-card:hover {
+ transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 224, 255, 0.3);
+  border-color: #00e0ff;
+}
+
+/* Icon */
+
+.icon-box {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(90deg, #7b61ff, #00e0ff);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.project-card h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #00e0ff;
+}
+
+.project-card p {
+  font-size: 14px;
+  color: #a0dfe8;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.learn-more {
+  color: #7c4dff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.learn-more:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+/* Tab Styling */
+.modal-tabs {
+  display: flex;
+  gap: 10px;
+  border-bottom: 1px solid #333;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.tab-item {
+  background: none;
+  border: none;
+  color: #bdafe4;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: 0.3s;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-item.active {
+  color: #333;
+  border-bottom: 0px solid #00e0ff;
+  /* font-weight: bold; */
+}
+
+/* Modal Content Adjustments */
+.project-icon-large {
+  font-size: 40px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.no-projects {
+  color: #666;
+  text-align: center;
+  padding: 40px;
+}
+
+.close-btn {
+  margin-top: 20px;
+  background: #7c4dff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+/* Update your CSS with these specific values */
+
+.modal-box {
+  width: 90%;
+  max-width: 900px;
+  min-height: 550px; /* Lock the minimum height to prevent jumping */
+  background: #071019;
+  border-radius: 15px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevent scrollbar flickering */
+}
+
+.modal-content {
+  flex: 1; /* Take up all remaining space */
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  height: 100%;
+  
+}
+
+.modal-details-wrapper {
+  display: grid; /* Using grid is more stable than flex for height */
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  height: 100%;
+ 
+  align-items: start;
+}
+
+/* Ensure images don't cause a layout shift while loading */
+.modal-image {
+  width: 100%;
+  height: 400px;
+  background: rgba(135, 4, 4, 0.05); /* Placeholder color */
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* 2. Hidden State (Fade Out) */
+.content-hidden {
+  opacity: 0;
+  transform: translateY(15px) scale(0.98); /* Slight shrink makes it feel like it's receding */
+}
+
+/* 3. Visible State (Fade In) */
+.content-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* 4. Smooth Underline Animation for Tabs */
+.tab-item {
+  position: relative;
+}
+
+.tab-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.tab-item.active::after {
+  width: 0%; /* Only expands the underline for the active tab */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.modal-image.gallery-layout {
+  display: flex;
+  flex-direction: column; /* Stack images vertically */
+  gap: 20px;
+  width: 100%;
+  max-height: 500px; /* Keep the modal from getting too tall */
+  overflow-y: auto;  /* Scroll if there are many images */
+  padding-right: 10px; /* Space for the scrollbar */
+}
+
+
+/* Custom Scrollbar for a cleaner look */
+.modal-image.gallery-layout::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-image.gallery-layout::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+}
+
+.gallery-img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.gallery-img:hover {
+  transform: scale(1.02); /* Slight zoom on hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* import React, { useEffect, useRef, useState } from "react";
+import "../styles/Project.css";
+const categories = [
+  { id: 1, title: "Websites", icon: "🌐", count: 12 },
+  { id: 2, title: "Android Apps", icon: "🤖", count: 5 },
+  { id: 3, title: "iOS Apps", icon: "🍎", count: 3 },
+  { id: 4, title: "Video Editing", icon: "🎬", count: 8 },
+];
+const projectsData = [
+  {
+    id: 1,
+    catId: 1,
+    title: "SuperPen 360",
+    description: "Full stack ecommerce platform with authentication and payments.",
+    subDescription:
+      "This project includes product listing, cart system, authentication, admin dashboard and payment integration.",
+    image: "/assets/project1.gif",
+    icon: "🛒"
+  },
+  {
+    id: 2,
+    catId: 1,
+    title: "Inspire App",
+    description: "Real time chat application using WebSocket.",
+    subDescription:
+      "Users can send messages instantly using WebSockets with real time updates.",
+    image: "/assets/project2.gif",
+    icon: "💬"
+  },
+  {
+    id: 3,catId: 1,
+    title: "Book Library Manager",
+    description: "Personal book management system.",
+    subDescription:
+      "Users can add, edit, delete and organize their reading list with authentication.",
+    image: "/assets/project3.gif",
+    icon: "📚"
+  },
+  {
+    id: 4,catId: 1,
+    title: "Energy_ingestion",
+    description: "Full stack ecommerce platform with authentication and payments.",
+    subDescription:
+      "This project includes product listing, cart system, authentication, admin dashboard and payment integration.",
+    image: "/assets/project1.gif",
+    icon: "🛒"
+  },
+  {
+    id: 5,catId: 1,
+    title: "E-commerce",
+    description: "Real time chat application using WebSocket.",
+    subDescription:
+      "Users can send messages instantly using WebSockets with real time updates.",
+    image: "/assets/project2.gif",
+    icon: "💬"
+  },
+  {
+    id: 6,catId: 1,
+    title: "Book Manager",
+    description: "Personal book management system.",
+    subDescription:
+      "Users can add, edit, delete and organize their reading list with authentication.",
+    image: "/assets/project3.gif",
+    icon: "📚"
+  },
+  {
+    id: 7,catId: 2,
+    title: "Third Eye",
+    description: "Personal book management system.",
+    subDescription:
+      "Users can add, edit, delete and organize their reading list with authentication.",
+    image: "/assets/project3.gif",
+    icon: "📚"
+  }
+];
+
+const ProjectPage = () => {
+
+  const sectionRef = useRef(null);
+  const [visible, setVisible] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setVisible(entry.isIntersecting);
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      id="project"
+      ref={sectionRef}
+      className={`projects-container ${visible ? "show" : ""}`}
+    >
+
+      <div className={`projects-header ${visible ? "header-show" : ""}`}>
+        <h2>My Projects</h2>
+        <p>
+          Here are some of the projects I have built using modern technologies.
+        </p>
+      </div>
+
+      <div className="projects-grid">
+        {categories.map((categorie, index) => (
+          <div
+            key={categorie.id}
+            className="project-card"
+            style={{ transitionDelay: `${index * 0.2}s` }}
+          >
+            <div className="icon-box">{categorie.icon}</div>
+            <h3>{categorie.title}</h3>
+            <p>Project done {categorie.count}+</p>
+
+            <a
+              href="#"
+              className="learn-more"
+              onClick={(e) => {
+                e.preventDefault();
+                setSelectedProject(categorie);
+              }}
+            >
+              View Project →
+            </a>
+          </div>
+        ))}
+      </div>
+
+      {selectedProject && (
+        <div
+          className="modal-overlay"
+          onClick={() => setSelectedProject(null)}
+        >
+          <div
+            className="modal-box"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="modal-content">
+
+              <div className="modal-text">
+                <h3>{selectedProject.title}</h3>
+                <p>{selectedProject.subDescription}</p>
+                <button onClick={() => setSelectedProject(null)}>Close</button>
+              </div>
+
+              <div className="modal-image">
+                <img src={selectedProject.image} alt="" />
+              </div>
+
+            </div>
+          </div>
+        </div>
+      )}
+
+    </div>
+  );
+};
+
+export default ProjectPage; */
