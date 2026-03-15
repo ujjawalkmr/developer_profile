@@ -9,12 +9,33 @@ const categories = [
 ];
 
 const projectsData = [
-  { id: 1, catId: 1, title: "SuperPen 360", description: "Full stack ecommerce...", subDescription: ` AAAAAAAAAAAAAAAA BBBBBBBBBBBBBBBB
+  {
+    id: 1, catId: 1, title: "SuperPen 360", description: "Full stack ecommerce...", subDescription: ` AAAAAAAAAAAAAAAA BBBBBBBBBBBBBBBB
     aeuhuhkhwef 
     aehfuwhifuhiuqwhf
     wrufhwiurhfiuwhfuwugf
     uhrfugwyrgfwfwgfyuwgurfksjfqwhrigfunqwurghiqwuhgiuwhegiuhviygeiybv
-    wrgiwg`, image:[ "/assets/admin/login_page.png","/assets/admin/pen_tab.png","/assets/admin/student_tab.png","/assets/admin/student_details.png"], icon: "🛒" },
+    aefqef
+    wrf
+    wrf
+    wrf
+    wrf
+    wrf
+    wrf
+    w
+
+    fwrfwrefjwuwhroufowrfuhufnwour fwourhgfuhw iuwh iuwhg hwiugh09ewrghweurg97we h9gunweu g9ehgwue t9g ewthgewuhtg uewht97gh ewutng uewguegu
+    ewyg euhg97ewhg9uewhtgu9 ewu9u eg he9ug h ewugh ueh7ghw eu eh8tgiew utg ethgu ewugeug etgh  wurng
+    wg ewgn eu guheuth ueng unep g
+    e etg jeotgouehgu
+    aefuhiwbfwiuqhr wuhg uwhtiu iutw w tuwt wutg iwu iuw utiuwh tiuwhuthiwuh g
+    wu wuothguew tueh eut ge u  hew h
+    q 
+    qw 8 qew ew ht
+    w twerhgtiew hogtihew g
+    qw rgw gigiegh 
+    wrgiwg`, image: ["/assets/admin/login_page.png", "/assets/admin/pen_tab.png", "/assets/admin/student_tab.png", "/assets/admin/student_details.png"], icon: "🛒"
+  },
   { id: 2, catId: 1, title: "Inspire App", description: "Real time chat...", subDescription: "Detailed info about Inspire App...", image: ["/assets/project2.gif"], icon: "💬" },
   { id: 3, catId: 1, title: "Book Library Manager", description: "Personal book...", subDescription: "Detailed info about Book Library...", image: ["/assets/project3.gif"], icon: "📚" },
   { id: 4, catId: 1, title: "Energy_ingestion", description: "Ecommerce...", subDescription: "Detailed info about Energy...", image: ["/assets/project1.gif"], icon: "🛒" },
@@ -140,22 +161,22 @@ const ProjectPage = () => {
                   </div> */}
 
 
-<div className="modal-image gallery-layout">
-  {/* The '?' and '&&' check if images exists before trying to map */}
-  {activeProject?.image && Array.isArray(activeProject.image) ? (
-    activeProject.image.map((imgUrl, index) => (
-      <img 
-        key={index} // Always keep the key for React performance
-        src={imgUrl} 
-        alt={`${activeProject.title} screenshot ${index + 1}`} 
-        className="gallery-img"
-      />
-    ))
-  ) : (
-    /* Fallback if there are no images in the array */
-    <p>No images available for this project.</p>
-  )}
-</div>
+                  <div className="modal-image gallery-layout">
+                    {/* The '?' and '&&' check if images exists before trying to map */}
+                    {activeProject?.image && Array.isArray(activeProject.image) ? (
+                      activeProject.image.map((imgUrl, index) => (
+                        <img
+                          key={index} // Always keep the key for React performance
+                          src={imgUrl}
+                          alt={`${activeProject.title} screenshot ${index + 1}`}
+                          className="gallery-img"
+                        />
+                      ))
+                    ) : (
+                      /* Fallback if there are no images in the array */
+                      <p>No images available for this project.</p>
+                    )}
+                  </div>
 
 
 

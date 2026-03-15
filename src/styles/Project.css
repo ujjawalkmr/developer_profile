@@ -128,6 +128,10 @@
   margin-bottom: 20px;
   overflow-x: auto;
   padding-bottom: 10px;
+    flex-shrink: 0;         /* tabs always visible */
+     scrollbar-width: none;  /* Firefox: hide scrollbar */
+  -ms-overflow-style: none; /* IE/Edge: hide scrollbar */
+
 }
 
 .tab-item {
@@ -177,11 +181,16 @@
   max-width: 900px;
   min-height: 550px; /* Lock the minimum height to prevent jumping */
   background: #071019;
+  height: 600px;
   border-radius: 15px;
-  padding: 30px;
+  padding-top: 30px;
+    padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Prevent scrollbar flickering */
+  overflow: hidden;
 }
 
 .modal-content {
@@ -189,24 +198,35 @@
   display: flex;
   flex-direction: column;
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  height: 100%;
   
+  
+}
+ .modal-text {
+  height: 450px;
+  white-space: normal;      /* wrap text naturally */
+  word-break: break-word;   /* break long words */
+}
+
+
+.modal-text::-webkit-scrollbar {
+  display: none;            /* hide scrollbar in Chrome, Safari, Edge */
 }
 
 .modal-details-wrapper {
   display: grid; /* Using grid is more stable than flex for height */
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  height: 100%;
- 
+  /* height: 100%; */
+ flex: 1;
   align-items: start;
+  overflow: hidden;
 }
 
 /* Ensure images don't cause a layout shift while loading */
 .modal-image {
   width: 100%;
   height: 400px;
-  background: rgba(135, 4, 4, 0.05); /* Placeholder color */
+  background: 0b1e2d; /* Placeholder color */
   border-radius: 10px;
   overflow: hidden;
 }
@@ -266,12 +286,21 @@
 
 .modal-image.gallery-layout {
   display: flex;
-  flex-direction: column; /* Stack images vertically */
+  flex-direction: column;
   gap: 20px;
+  overflow-y: auto;       /* scroll if too many images */
+  padding-right: 10px;
+  scrollbar-width: none;
+  flex: 1;  
+}
+
+
+/* Individual images fill width and scale nicely */
+.modal-image.gallery-layout img {
   width: 100%;
-  max-height: 500px; /* Keep the modal from getting too tall */
-  overflow-y: auto;  /* Scroll if there are many images */
-  padding-right: 10px; /* Space for the scrollbar */
+  object-fit: contain;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 
