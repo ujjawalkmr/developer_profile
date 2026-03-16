@@ -135,8 +135,9 @@
 }
 
 .tab-item {
-  background: none;
+  background: #011e31;
   border: none;
+  border-radius: 10px;
   color: #bdafe4;
   padding: 8px 16px;
   cursor: pointer;
@@ -147,8 +148,8 @@
 }
 
 .tab-item.active {
-  color: #333;
-  border-bottom: 0px solid #00e0ff;
+  color: white;
+  /* border-bottom: 0px solid #00e0ff; */
   /* font-weight: bold; */
 }
 
@@ -175,7 +176,31 @@
   cursor: pointer;
 }
 /* Update your CSS with these specific values */
+.modal-overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
 
+  /* background: rgba(0,0,0,0.6); */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;   /* THIS centers vertically */
+
+  z-index: 9999;
+
+  opacity:1;
+  transition: opacity 0.6s ease;
+  
+}
+
+/* Closing animation */
+.modal-overlay.closing {
+  opacity: 0;
+}
 .modal-box {
   width: 90%;
   max-width: 900px;
@@ -190,7 +215,26 @@
 
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+ overflow-y: auto;
+  animation: modalFade 0.3s ease;
+
+ opacity:1;
+  transform: scale(1);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.modal-box.closing {
+  opacity:0;
+  transform: scale(0.95);
+}
+
+/* Optional: modal opening animation */
+.modal-box {
+  animation: modalOpen 0.35s ease;
+}
+
+@keyframes modalOpen {
+  0% { opacity:0; transform: scale(0.95) translateY(30px); }
+  100% { opacity:1; transform: scale(1) translateY(0); }
 }
 
 .modal-content {
@@ -205,8 +249,14 @@
   height: 450px;
   white-space: normal;      /* wrap text naturally */
   word-break: break-word;   /* break long words */
+  overflow-y: auto;
+  max-height: 100%;
+  padding-right: 10px;
+  color:#bdafe4;
 }
-
+.modal-text p {
+  white-space: pre-wrap;
+}
 
 .modal-text::-webkit-scrollbar {
   display: none;            /* hide scrollbar in Chrome, Safari, Edge */
@@ -225,7 +275,7 @@
 /* Ensure images don't cause a layout shift while loading */
 .modal-image {
   width: 100%;
-  height: 400px;
+  height: 450px;
   background: 0b1e2d; /* Placeholder color */
   border-radius: 10px;
   overflow: hidden;

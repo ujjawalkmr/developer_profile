@@ -76,18 +76,18 @@ I am passionate about learning and improving with every project. My goal is to b
     image: "/assets/video_edit.gif"
   },
   {
-   id: 6,
-title: "Web Design",
-description: "I design modern, clean, and responsive website layouts that provide an intuitive user experience and visually engaging interfaces.",
-subDescription: `I specialize in designing visually appealing and user-friendly website interfaces that focus on both aesthetics and usability. My goal is to create designs that are clean, modern, and easy for users to navigate.
+    id: 6,
+    title: "Web Design",
+    description: "I design modern, clean, and responsive website layouts that provide an intuitive user experience and visually engaging interfaces.",
+    subDescription: `I specialize in designing visually appealing and user-friendly website interfaces that focus on both aesthetics and usability. My goal is to create designs that are clean, modern, and easy for users to navigate.
 I design responsive layouts that work smoothly across desktops, tablets, and mobile devices. I focus on proper spacing, typography, color balance, and visual hierarchy to make websites look professional and easy to use.
 Using technologies like HTML, CSS, and modern UI design practices, I create structured layouts that improve user experience and keep visitors engaged with the website content.
 I also focus on UI consistency, smooth interactions, and well-organized sections that help users quickly find the information they need.
 Whether it's designing a landing page, a portfolio website, or a business website, my goal is to create attractive and functional designs that enhance the overall user experience.`,
 
-icon: "🎨",
-highlight: false,image: "/assets/web_app.gif"
-}
+    icon: "🎨",
+    highlight: false, image: "/assets/web_app.gif"
+  }
 ];
 const ServicesPage = () => {
   const sectionRef = useRef(null);
@@ -111,25 +111,25 @@ const ServicesPage = () => {
 
     return () => observer.disconnect();
   }, []);
- useEffect(() => {
-  const handleScroll = (e) => {
-    // Only prevent scroll if event target is NOT the modal box
-    const modal = document.querySelector(".modal-box");
-    if (modal && !modal.contains(e.target)) {
-      e.preventDefault();
+  useEffect(() => {
+    const handleScroll = (e) => {
+      // Only prevent scroll if event target is NOT the modal box
+      const modal = document.querySelector(".modal-box");
+      if (modal && !modal.contains(e.target)) {
+        e.preventDefault();
+      }
+    };
+
+    if (selectedService) {
+      window.addEventListener("wheel", handleScroll, { passive: false });
+      window.addEventListener("touchmove", handleScroll, { passive: false });
     }
-  };
 
-  if (selectedService) {
-    window.addEventListener("wheel", handleScroll, { passive: false });
-    window.addEventListener("touchmove", handleScroll, { passive: false });
-  }
-
-  return () => {
-    window.removeEventListener("wheel", handleScroll);
-    window.removeEventListener("touchmove", handleScroll);
-  };
-}, [selectedService]);
+    return () => {
+      window.removeEventListener("wheel", handleScroll);
+      window.removeEventListener("touchmove", handleScroll);
+    };
+  }, [selectedService]);
 
   return (
     <div id="service"
@@ -170,22 +170,22 @@ const ServicesPage = () => {
       </div>
       {/* Modal */}
       {selectedService && (
-        <div className="modal-overlay" onClick={() => setSelectedService(null)}>
+        <div className="service-modal-overlay" onClick={() => setSelectedService(null)}>
           <div
-            className="modal-box"
+            className="service-modal-box"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="modal-content">
+            <div className="service-modal-content">
 
               {/* Left Side Text */}
-              <div className="modal-text">
+              <div className="service-modal-text">
                 <h3>{selectedService.title}</h3>
                 <p>{selectedService.subDescription}</p>
                 <button onClick={() => setSelectedService(null)}>Close</button>
               </div>
 
               {/* Right Side Image */}
-              <div className="modal-image">
+              <div className="service-modal-image">
                 <img src={selectedService.image} alt={selectedService.title} />
               </div>
 
