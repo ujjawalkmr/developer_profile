@@ -93,6 +93,15 @@ const ServicesPage = () => {
   const sectionRef = useRef(null);
   const [visible, setVisible] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
+  const [isClosing, setIsClosing] = useState(false);
+
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setSelectedService(null);
+      setIsClosing(false);
+    }, 300); // match animation duration
+  };
 
 
   useEffect(() => {
@@ -170,9 +179,9 @@ const ServicesPage = () => {
       </div>
       {/* Modal */}
       {selectedService && (
-        <div className="service-modal-overlay" onClick={() => setSelectedService(null)}>
+        <div className="service-modal-overlay" onClick={handleClose}>
           <div
-            className="service-modal-box"
+            className={`service-modal-box ${isClosing ? "closing" : ""}`}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="service-modal-content">
@@ -181,7 +190,7 @@ const ServicesPage = () => {
               <div className="service-modal-text">
                 <h3>{selectedService.title}</h3>
                 <p>{selectedService.subDescription}</p>
-                <button onClick={() => setSelectedService(null)}>Close</button>
+                <button onClick={handleClose}>Close</button>
               </div>
 
               {/* Right Side Image */}
