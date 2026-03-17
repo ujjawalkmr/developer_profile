@@ -54,7 +54,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  cursor:pointer;
+  cursor: pointer;
 
   /* RIGHT SIDE ANIMATION */
   transform: translateX(120px);
@@ -72,7 +72,7 @@
 /* Hover */
 
 .project-card:hover {
- transform: scale(1.05);
+  transform: scale(1.05);
   box-shadow: 0 20px 40px rgba(0, 224, 255, 0.3);
   border-color: #00e0ff;
 }
@@ -128,9 +128,12 @@
   margin-bottom: 20px;
   overflow-x: auto;
   padding-bottom: 10px;
-    flex-shrink: 0;         /* tabs always visible */
-     scrollbar-width: none;  /* Firefox: hide scrollbar */
-  -ms-overflow-style: none; /* IE/Edge: hide scrollbar */
+  flex-shrink: 0;
+  /* tabs always visible */
+  scrollbar-width: none;
+  /* Firefox: hide scrollbar */
+  -ms-overflow-style: none;
+  /* IE/Edge: hide scrollbar */
 
 }
 
@@ -175,8 +178,9 @@
   border-radius: 6px;
   cursor: pointer;
 }
+
 /* Update your CSS with these specific values */
-.modal-overlay{
+.modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -188,42 +192,46 @@
 
   display: flex;
   justify-content: center;
-  align-items: center;   /* THIS centers vertically */
+  align-items: center;
+  /* THIS centers vertically */
 
   z-index: 9999;
 
-  opacity:1;
+  opacity: 1;
   transition: opacity 0.6s ease;
-  
+
 }
 
 /* Closing animation */
 .modal-overlay.closing {
   opacity: 0;
 }
+
 .modal-box {
   width: 90%;
   max-width: 900px;
-  min-height: 550px; /* Lock the minimum height to prevent jumping */
+  min-height: 550px;
+  /* Lock the minimum height to prevent jumping */
   background: #071019;
   height: 600px;
   border-radius: 15px;
   padding-top: 30px;
-    padding-left: 30px;
+  padding-left: 30px;
   padding-right: 30px;
   padding-bottom: 30px;
 
   display: flex;
   flex-direction: column;
- overflow-y: auto;
+  overflow-y: auto;
   animation: modalFade 0.3s ease;
 
- opacity:1;
+  opacity: 1;
   transform: scale(1);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
+
 .modal-box.closing {
-  opacity:0;
+  opacity: 0;
   transform: scale(0.95);
 }
 
@@ -233,41 +241,55 @@
 }
 
 @keyframes modalOpen {
-  0% { opacity:0; transform: scale(0.95) translateY(30px); }
-  100% { opacity:1; transform: scale(1) translateY(0); }
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .modal-content {
-  flex: 1; /* Take up all remaining space */
+  flex: 1;
+  /* Take up all remaining space */
   display: flex;
   flex-direction: column;
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  
-  
+
+
 }
- .modal-text {
+
+.modal-text {
   height: 450px;
-  white-space: normal;      /* wrap text naturally */
-  word-break: break-word;   /* break long words */
+  white-space: normal;
+  /* wrap text naturally */
+  word-break: break-word;
+  /* break long words */
   overflow-y: auto;
   max-height: 100%;
   padding-right: 10px;
-  color:#bdafe4;
+  color: #bdafe4;
 }
+
 .modal-text p {
   white-space: pre-wrap;
 }
 
 .modal-text::-webkit-scrollbar {
-  display: none;            /* hide scrollbar in Chrome, Safari, Edge */
+  display: none;
+  /* hide scrollbar in Chrome, Safari, Edge */
 }
 
 .modal-details-wrapper {
-  display: grid; /* Using grid is more stable than flex for height */
+  display: grid;
+  /* Using grid is more stable than flex for height */
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   /* height: 100%; */
- flex: 1;
+  flex: 1;
   align-items: start;
   overflow: hidden;
 }
@@ -276,7 +298,8 @@
 .modal-image {
   width: 100%;
   height: 450px;
-  background: 0b1e2d; /* Placeholder color */
+  background: 0b1e2d;
+  /* Placeholder color */
   border-radius: 10px;
   overflow: hidden;
 }
@@ -290,7 +313,8 @@
 /* 2. Hidden State (Fade Out) */
 .content-hidden {
   opacity: 0;
-  transform: translateY(15px) scale(0.98); /* Slight shrink makes it feel like it's receding */
+  transform: translateY(15px) scale(0.98);
+  /* Slight shrink makes it feel like it's receding */
 }
 
 /* 3. Visible State (Fade In) */
@@ -316,7 +340,8 @@
 }
 
 .tab-item.active::after {
-  width: 0%; /* Only expands the underline for the active tab */
+  width: 0%;
+  /* Only expands the underline for the active tab */
 }
 
 
@@ -338,10 +363,11 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  overflow-y: auto;       /* scroll if too many images */
+  overflow-y: auto;
+  /* scroll if too many images */
   padding-right: 10px;
   scrollbar-width: none;
-  flex: 1;  
+  flex: 1;
 }
 
 
@@ -358,6 +384,7 @@
 .modal-image.gallery-layout::-webkit-scrollbar {
   width: 6px;
 }
+
 .modal-image.gallery-layout::-webkit-scrollbar-thumb {
   background: #333;
   border-radius: 10px;
@@ -372,7 +399,8 @@
 }
 
 .gallery-img:hover {
-  transform: scale(1.02); /* Slight zoom on hover */
+  transform: scale(1.02);
+  /* Slight zoom on hover */
 }
 
 
@@ -380,6 +408,39 @@
 
 
 
+
+
+
+
+.youtube-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.youtube-card {
+  text-decoration: none;
+  color: white;
+}
+
+.thumb-wrapper {
+  position: relative;
+}
+
+.thumb-wrapper img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.play-btn {
+  position: absolute;
+  font-size: 40px;
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 
 
