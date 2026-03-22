@@ -162,17 +162,18 @@
 
 .edu-details h3 {
     margin: 0;
+     color:#00e0ff;
+    
 }
 
 .edu-details h4 {
     margin: 0;
     font-size: 14px;
-    color: #cbd5f5;
-}
+ color:#00e0ff;}
 
 .edu-details p {
     font-size: 13px;
-    color: #94a3b8;
+    color: #51a7b3;
 }
 
 

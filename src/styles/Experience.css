@@ -1,0 +1,174 @@
+.experience {
+    padding: 30px 20px;
+    color: #fff;
+}
+
+/* HEADER */
+.experience-title {
+    text-align: center;
+    text-align: center;
+    margin-bottom: 20px;
+    opacity: 0;
+    font-size: 32px;
+    transform: translateY(-40px);
+    transition: all 0.8s ease;
+}
+
+.animate-header {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.experience-header-line {
+    width: 300px;
+    height: 4px;
+    background: #7b61ff;
+    margin: auto;
+    border-radius: 5px;
+}
+
+/* MAIN LAYOUT */
+.experience-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin: 30px;
+    justify-content: center;
+    /* background: #00e0ff; */
+}
+
+/* LEFT TIMELINE */
+.experience-timeline {
+    flex: 1.2;
+    opacity: 0;
+    transform: translateX(-80px);
+    transition: 0.8s;
+}
+
+/* RIGHT IMAGE */
+.experience-image {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateX(80px);
+    transition: 0.8s;
+}
+
+.experience-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+}
+
+/* ANIMATION */
+.slide-left {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.slide-right {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+/* TIMELINE */
+.timeline {
+    position: relative;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    background: #38bdf8;
+    top: 0;
+    bottom: 0;
+    left: 10px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+    padding-left: 40px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 2px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background: #38bdf8;
+    border-radius: 50%;
+}
+
+/* CARD */
+.timeline-content {
+    background: #0b1e2d;
+    padding: 15px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+/* GRID (IMAGE + DETAILS) */
+.exp-card {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 15px;
+}
+
+/* IMAGE */
+.exp-img img {
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* DETAILS */
+.exp-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.year {
+    font-size: 12px;
+    color: #38bdf8;
+}
+
+.exp-details h3,
+.exp-details h4 {
+    margin: 0;
+    color: #00e0ff;
+}
+
+.exp-details h4 {
+    font-size: 14px;
+    color: #51a7b3;
+}
+
+.exp-details p {
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+/* HOVER */
+.timeline-content:hover {
+    transform: scale(1.05);
+    border: 1px solid #00e0ff;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .experience-container {
+        flex-direction: column;
+    }
+
+    .exp-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
