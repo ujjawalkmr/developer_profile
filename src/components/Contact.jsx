@@ -71,9 +71,13 @@ console.log(serviceID); // should print your service ID
 
   return (
     <section className="contact" ref={contactRef}>
-      <h2 className={`contact-title ${show ? "animate-top" : ""}`}>
+    <div className={`contact-title ${show ? "animate-top" : ""}`}>
+                <h2>GET IN TOUCH & COLLABORATE</h2>
+                <div className="contact-header-line"></div>
+            </div>
+      {/* <h2 className={`contact-title ${show ? "animate-top" : ""}`}>
         GET IN TOUCH & COLLABORATE
-      </h2>
+      </h2> */}
 
       <div className="contact-container">
 

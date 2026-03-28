@@ -7,8 +7,19 @@
   font-size: 32px;
   margin-bottom: 40px;
   opacity: 0;
-  transform: translateY(-30px);
-  transition: all 0.6s ease;
+  transform: translateY(-40px);
+  transition: all 0.8s ease;
+}
+.animate-header {
+    opacity: 1;
+    transform: translateY(0);
+}
+.contact-header-line {
+    width: 800px;
+    height: 4px;
+    background: #7b61ff;
+    margin: auto;
+    border-radius: 5px;
 }
 
 .contact-container {
@@ -182,23 +193,33 @@ a:hover {
   margin-bottom: 15px;
   padding: 12px;
   border-radius: 10px;
-  border: 1px solid #f0f0f0;
+  border: 1px solid transparent;
   /* outline: chartreuse  ; */
   color: #00e0ff;
+    caret-color: #00e0ff;
+
   background: #22c55e;
-  background-color: transparent;
+  background-color: #05375f;
    transform: scale(1);
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .contact-right textarea {
   height: 120px;
+   resize: none;
+}
+/* ✨ PLACEHOLDER (HINT TEXT) */
+.contact-right input::placeholder,
+.contact-right textarea::placeholder {
+  color: #a0c4ff;
+  opacity: 1; /* ensures full visibility */
 }
 /* Focus effect */
 .contact-right input:focus,
 .contact-right textarea:focus {
   transform: scale(1.05); /* grow slightly */
-  border-color: #00e0ff; /* optional color change */
+   border: 1px solid #00e0ff;
+  /* border-color: #00e0ff; */
   box-shadow: 0 5px 20px rgba(0, 224, 255, 0.3); /* soft glow */
 }
 .download-btn {
@@ -217,7 +238,7 @@ a:hover {
   padding: 12px 25px;
   border-radius: 8px;
   border: none;
-  background-color: #00e0ff;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4);
   color: white;
   font-weight: bold;
   cursor: pointer;
