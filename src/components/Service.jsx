@@ -120,25 +120,51 @@ const ServicesPage = () => {
 
     return () => observer.disconnect();
   }, []);
-  useEffect(() => {
-    const handleScroll = (e) => {
-      // Only prevent scroll if event target is NOT the modal box
-      const modal = document.querySelector(".modal-box");
-      if (modal && !modal.contains(e.target)) {
-        e.preventDefault();
-      }
-    };
+  // useEffect(() => {
+  //   const handleScroll = (e) => {
+  //     // Only prevent scroll if event target is NOT the modal box
+  //     const modal = document.querySelector(".modal-box");
+  //     if (modal && !modal.contains(e.target)) {
+  //       e.preventDefault();
+  //     }
+  //   };
 
-    if (selectedService) {
-      window.addEventListener("wheel", handleScroll, { passive: false });
-      window.addEventListener("touchmove", handleScroll, { passive: false });
-    }
+  //   if (selectedService) {
+  //     window.addEventListener("wheel", handleScroll, { passive: false });
+  //     window.addEventListener("touchmove", handleScroll, { passive: false });
+  //   }
 
-    return () => {
-      window.removeEventListener("wheel", handleScroll);
-      window.removeEventListener("touchmove", handleScroll);
-    };
-  }, [selectedService]);
+  //   return () => {
+  //     window.removeEventListener("wheel", handleScroll);
+  //     window.removeEventListener("touchmove", handleScroll);
+  //   };
+  // }, [selectedService]);
+
+
+
+useEffect(() => {
+  if (selectedService) {
+    // prevent background scroll
+    const scrollBarWidth =
+      window.innerWidth - document.documentElement.clientWidth;
+
+    document.body.style.overflow = "hidden";
+    document.body.style.paddingRight = `${scrollBarWidth}px`;
+  } else {
+    document.body.style.overflow = "";
+    document.body.style.paddingRight = "";
+  }
+
+  return () => {
+    document.body.style.overflow = "";
+    document.body.style.paddingRight = "";
+  };
+}, [selectedService]);
+
+
+
+
+
 
   return (
     <div id="service"

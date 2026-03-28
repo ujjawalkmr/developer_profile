@@ -15,9 +15,14 @@ const Contact = () => {
   });
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false); // ✅ loader state
-  const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-
-console.log(serviceID); // should print your service ID
+  const downloadCV = () => {
+    const link = document.createElement("a");
+    link.href = "/assets/UjjawalKumar@.pdf"; // file path
+    link.download = "Ujjawal_CV.pdf"; // file name after download
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   // Handle input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -36,10 +41,10 @@ console.log(serviceID); // should print your service ID
 
     emailjs
       .send(
-          import.meta.env.VITE_EMAILJS_SERVICE_ID, // replace with your EmailJS Service ID
+        import.meta.env.VITE_EMAILJS_SERVICE_ID, // replace with your EmailJS Service ID
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,  // replace with your EmailJS Template ID
         templateParams,
-          import.meta.env.VITE_EMAILJS_PUBLIC_KEY   // replace with your EmailJS Public Key
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY   // replace with your EmailJS Public Key
       )
       .then(
         (response) => {
@@ -70,11 +75,11 @@ console.log(serviceID); // should print your service ID
   }, []);
 
   return (
-    <section className="contact" ref={contactRef}>
-    <div className={`contact-title ${show ? "animate-top" : ""}`}>
-                <h2>GET IN TOUCH & COLLABORATE</h2>
-                <div className="contact-header-line"></div>
-            </div>
+    <section id="contact" className="contact" ref={contactRef}>
+      <div className={`contact-title ${show ? "animate-top" : ""}`}>
+        <h2>GET IN TOUCH & COLLABORATE</h2>
+        <div className="contact-header-line"></div>
+      </div>
       {/* <h2 className={`contact-title ${show ? "animate-top" : ""}`}>
         GET IN TOUCH & COLLABORATE
       </h2> */}
@@ -88,7 +93,7 @@ console.log(serviceID); // should print your service ID
             I build scalable, secure and high-performance applications using modern technologies.
           </p>
 
-          <button className="download-btn">⬇ Download CV</button>
+          <button className="download-btn" onClick={downloadCV}>⬇ Download CV</button>
 
           <hr />
 
