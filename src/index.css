@@ -26,3 +26,25 @@ body{
     padding:30px 20px;
   }
 }
+
+
+/* entire scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* track (background) */
+::-webkit-scrollbar-track {
+  background: #0f172a; /* dark background */
+}
+
+/* thumb (the moving part) */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #7b61ff, #00d4ff);
+  border-radius: 10px;
+}
+
+/* hover effect */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #5a3dff, #00aaff);
+}
