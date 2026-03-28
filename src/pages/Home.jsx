@@ -8,6 +8,7 @@ const Service=lazy(()=>import("../components/Service"));
 const Project=lazy(()=>import("../components/Project"));
 const Education=lazy(()=>import("../components/Education"));
 const Experience=lazy(()=>import("../components/Experience"));
+const Contact=lazy(()=>import("../components/Contact"));
 
 
 const Home = () => {
@@ -38,6 +39,9 @@ const Home = () => {
       </Suspense>
       <Suspense fallback={<div className="loader">Loading Skills...</div>}>
         <Experience />
+      </Suspense>
+      <Suspense fallback={<div className="loader">Loading Skills...</div>}>
+        <Contact />
       </Suspense>
     
     </>
