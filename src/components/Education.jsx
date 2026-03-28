@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../styles/Education.css";
-import eduImg from "/assets/edu_me.png";
+import eduImg from "/assets/edu_m.png";
 
 const educationData = [
     {

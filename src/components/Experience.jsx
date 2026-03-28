@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../styles/Experience.css";
-import expImg from "/assets/exp_me.png";
+import expImg from "/assets/exp_m.png";
 
 const experienceData = [
     {
