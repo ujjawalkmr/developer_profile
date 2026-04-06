@@ -1,4 +1,4 @@
-import { Suspense, lazy } from "react";
+import { useState, useEffect, Suspense, lazy } from "react";
 //import { useMediaQuery } from "react-responsive"
 
 const Navbar = lazy(() => import("../components/Navbar"));
@@ -13,10 +13,19 @@ const Contact = lazy(() => import("../components/Contact"));
 
 const HeroMobile = lazy(() => import("../components/HeroMobile"));
 
+function useIsMobile(breakpoint = 868) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < breakpoint);
 
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < breakpoint);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [breakpoint]);
+
+  return isMobile;
+}
 const Home = () => {
-  //const isMobile = useMediaQuery({ maxWidth: 768 });
-  const isMobile = window.innerWidth < 768;
+  const isMobile = useIsMobile();
   return (
     <>
       <Suspense fallback={<div className="loader">Loading Navbar...</div>}>
@@ -24,7 +33,7 @@ const Home = () => {
       </Suspense>
 
       <Suspense fallback={<div className="loader">Loading Hero...</div>}>
-        {isMobile ? <Hero /> : <HeroMobile />}
+        {isMobile ? <HeroMobile /> : <Hero />}
         {/* <Hero /> */}
       </Suspense>
       <Suspense fallback={<div className="loader">Loading Hero...</div>}>

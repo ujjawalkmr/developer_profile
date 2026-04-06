@@ -1,4 +1,4 @@
-.hero {
+.hero-mobile {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,8 +6,8 @@
     /* height: 100vh; */
     /* Light background to make the indigo pop */
     padding-bottom: 50px;
-    /* Gives space at the bottom for the text */
     overflow: hidden;
+
 
 }
 
@@ -23,6 +23,8 @@
     /* Prevents horizontal scrolling */
     /* padding: 20px; */
     box-sizing: border-box;
+
+
 }
 
 
@@ -35,7 +37,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    /* 1.2s duration makes it feel heavy and premium */
+    transition:
+        transform 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+        opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform, opacity;
+}
 
+/* Image slides further left when 'removed' */
+.hero-mobile-container {
+    transform: translateX(-120px) scale(0.8);
 }
 
 /* The Indigo Circle behind the image */
@@ -47,6 +59,7 @@
     /* Indigo color */
     border-radius: 60% 40% 50% 50% / 40% 60% 40% 60%;
     z-index: 1;
+
 }
 
 /* The Image Container (The Circle) */
@@ -110,6 +123,10 @@
 .text-section {
     align-items: center;
     text-align: center;
+    opacity: 0;
+    transform: translateX(100px);
+    /* Start off-screen right */
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .top-tag {
@@ -144,6 +161,10 @@
 .buttons {
     display: flex;
     gap: 15px;
+    opacity: 0;
+    transform: translateX(100px);
+    /* Start off-screen right */
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary {
@@ -158,6 +179,7 @@
 
 .btn-primary:hover {
     background: #5a45d1;
+    transform: scale(1.05);
 }
 
 .btn-outline {
@@ -167,9 +189,46 @@
     border-radius: 6px;
     cursor: pointer;
     color: #5a45d1;
+    transition: 0.3s;
 }
 
 .btn-outline:hover {
     background: #473d86;
     color: white;
+
+    transform: scale(1.05);
+
+}
+
+.text-section,
+.buttons {
+    transform: translateX(120px);
+}
+
+.animate-left,
+.animate-right {
+    opacity: 1 !important;
+    transform: translateX(0) scale(1) !important;
+    /* Move to original position */
+}
+
+/* --- Staggered Entry (When scrolling IN) --- */
+.text-section.animate-right {
+    transition-delay: 0.1s;
+}
+
+.buttons.animate-right {
+    transition-delay: 0.2s;
+}
+
+/* --- Smooth Exit (When scrolling OUT) --- */
+/* When 'show' is false, we remove delays so everything fades 
+   out together quickly and cleanly */
+.hero-mobile-container:not(.animate-left),
+.text-section:not(.animate-right),
+.buttons:not(.animate-right) {
+    transition-duration: 0.6s;
+    /* Faster exit feels more responsive */
+    transition-delay: 0s;
+    /* No delay on exit */
 }
