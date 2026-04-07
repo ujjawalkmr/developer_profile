@@ -24,13 +24,18 @@ const Hero = () => {
 
   useEffect(() => {
     if (openContact) {
-      document.body.style.overflow = "hidden"; // stop scroll
+      // Prevent both scrolls, but specifically lock horizontal
+      document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = "15px"; // Rough width of a scrollbar to prevent jump
     } else {
-      document.body.style.overflow = "auto";   // enable scroll
+      document.body.style.overflow = "unset";
+      document.body.style.overflowX = "hidden";
+      document.body.style.paddingRight = "0px";
     }
 
     return () => {
-      document.body.style.overflow = "auto"; // cleanup
+      document.body.style.overflow = "unset";
+      document.body.style.overflowX = "hidden";
     };
   }, [openContact]);
   const handleClose = () => {
