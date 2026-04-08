@@ -1,0 +1,89 @@
+.about-mobile {
+  /* width: 100%; */
+  /* min-height: 100vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background: #0f172a; */
+  padding: 40px 20px;
+  overflow-x: hidden;
+}
+
+/* STACK WRAPPER */
+.about-mobile-wrapper {
+  position: relative;
+  width: 100%;
+  height: 420px;
+
+  padding: 0 40px; /* 👈 allows blur to show on sides */
+  box-sizing: border-box;
+}
+
+/* =========================
+   TOP (BLUR BACKGROUND CARD)
+========================= */
+.legacy-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  border-radius: 18px;
+
+  background-size: cover;
+  background-position: center;
+
+  filter: brightness(0.4) blur(2px);
+  z-index: 1;
+}
+
+/* TEXT ON TOP */
+.about-mobile-overlay {
+  position: absolute;
+  top:0;
+  width: 90%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+font-size: 500px;
+  color: rgb(211, 20, 20);
+  text-align: center;
+  padding: 10px;
+}
+
+
+.about-mobile-overlay h1 {
+  font-size: 18px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+/* =========================
+   BOTTOM IMAGE CARD
+========================= */
+.about-mobile-card {
+  position: absolute;
+  bottom: 0;
+
+  width: 85%; /* 👈 smaller than background */
+  left: 50%;
+  transform: translateX(-50%);
+
+  height: 60%;
+  border-radius: 18px;
+  overflow: hidden;
+
+  z-index: 3;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* IMAGE INSIDE CARD */
+.about-mobile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+}

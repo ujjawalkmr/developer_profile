@@ -1,5 +1,5 @@
 import { useState, useEffect, Suspense, lazy } from "react";
-//import { useMediaQuery } from "react-responsive"
+import AboutMobile from "../components/AboutMobile";
 
 const Navbar = lazy(() => import("../components/Navbar"));
 const Hero = lazy(() => import("../components/Hero"));
@@ -10,56 +10,87 @@ const Project = lazy(() => import("../components/Project"));
 const Education = lazy(() => import("../components/Education"));
 const Experience = lazy(() => import("../components/Experience"));
 const Contact = lazy(() => import("../components/Contact"));
-
 const HeroMobile = lazy(() => import("../components/HeroMobile"));
 
+/* ✅ SAFE MOBILE HOOK */
 function useIsMobile(breakpoint = 868) {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < breakpoint);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < breakpoint);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    const checkSize = () => {
+      setIsMobile(window.innerWidth < breakpoint);
+    };
+
+    checkSize(); // initial check
+    window.addEventListener("resize", checkSize);
+
+    return () => window.removeEventListener("resize", checkSize);
   }, [breakpoint]);
 
   return isMobile;
 }
+
 const Home = () => {
   const isMobile = useIsMobile();
+
+  /* ✅ HARD FIX: prevent horizontal scroll globally for this page */
+  useEffect(() => {
+    const html = document.documentElement;
+    const body = document.body;
+
+    html.style.overflowX = "hidden";
+    body.style.overflowX = "hidden";
+    html.style.width = "100%";
+    body.style.width = "100%";
+
+    return () => {
+      html.style.overflowX = "";
+      body.style.overflowX = "";
+      html.style.width = "";
+      body.style.width = "";
+    };
+  }, []);
+
   return (
-    <>
+    <div style={{ overflowX: "hidden", width: "100%" }}>
       <Suspense fallback={<div className="loader">Loading Navbar...</div>}>
         <Navbar />
       </Suspense>
 
       <Suspense fallback={<div className="loader">Loading Hero...</div>}>
         {isMobile ? <HeroMobile /> : <Hero />}
-        {/* <Hero /> */}
       </Suspense>
-      <Suspense fallback={<div className="loader">Loading Hero...</div>}>
-        <About />
+
+      <Suspense fallback={<div className="loader">Loading About...</div>}>
+               {isMobile ? <AboutMobile /> : <About />}
+
+        {/* <About /> */}
       </Suspense>
 
       <Suspense fallback={<div className="loader">Loading Skills...</div>}>
         <Skills />
       </Suspense>
-      <Suspense fallback={<div className="loader">Loading Skills...</div>}>
+
+      <Suspense fallback={<div className="loader">Loading Service...</div>}>
         <Service />
       </Suspense>
-      <Suspense fallback={<div className="loader">Loading Skills...</div>}>
+
+      <Suspense fallback={<div className="loader">Loading Project...</div>}>
         <Project />
       </Suspense>
-      <Suspense fallback={<div className="loader">Loading Skills...</div>}>
+
+      <Suspense fallback={<div className="loader">Loading Education...</div>}>
         <Education />
       </Suspense>
-      <Suspense fallback={<div className="loader">Loading Skills...</div>}>
+
+      <Suspense fallback={<div className="loader">Loading Experience...</div>}>
         <Experience />
       </Suspense>
-      <Suspense fallback={<div className="loader">Loading Skills...</div>}>
+
+      <Suspense fallback={<div className="loader">Loading Contact...</div>}>
         <Contact />
       </Suspense>
-
-    </>
+    </div>
   );
 };
 
