@@ -129,12 +129,12 @@
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.top-tag {
+.mobile-top-tag {
     font-size: 14px;
     margin-bottom: 8px;
 }
 
-.top-tag span {
+.mobile-top-tag span {
     color: #7b61ff;
     font-weight: 600;
 }
@@ -158,7 +158,7 @@
 }
 
 /* button section */
-.buttons {
+.mobile-buttons {
     display: flex;
     gap: 15px;
     opacity: 0;
@@ -167,7 +167,7 @@
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.btn-primary {
+.mobile-btn-primary {
     background: #7b61ff;
     color: white;
     padding: 12px 22px;
@@ -177,12 +177,12 @@
     transition: 0.3s;
 }
 
-.btn-primary:hover {
+.mobile-btn-primary:hover {
     background: #5a45d1;
     transform: scale(1.05);
 }
 
-.btn-outline {
+.mobile-btn-outline {
     border: 1px solid #7b61ff;
     background: transparent;
     padding: 12px 22px;
@@ -192,7 +192,7 @@
     transition: 0.3s;
 }
 
-.btn-outline:hover {
+.mobile-btn-outline:hover {
     background: #473d86;
     color: white;
 
@@ -201,7 +201,7 @@
 }
 
 .text-section,
-.buttons {
+.mobile-buttons {
     transform: translateX(120px);
 }
 
@@ -217,7 +217,7 @@
     transition-delay: 0.1s;
 }
 
-.buttons.animate-right {
+.mobile-buttons.animate-right {
     transition-delay: 0.2s;
 }
 
@@ -226,7 +226,7 @@
    out together quickly and cleanly */
 .hero-mobile-container:not(.animate-left),
 .text-section:not(.animate-right),
-.buttons:not(.animate-right) {
+.mobile-buttons:not(.animate-right) {
     transition-duration: 0.6s;
     /* Faster exit feels more responsive */
     transition-delay: 0s;

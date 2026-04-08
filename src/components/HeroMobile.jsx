@@ -44,7 +44,7 @@ const HeroMobile = () => {
 
                 {/* --- Content Group: Animates from Right --- */}
                 <div className={`text-section ${show ? "animate-right" : ""}`}>
-                    <p className="top-tag">
+                    <p className="mobile-top-tag">
                         I AM <span>Full Stack Developer</span>
                     </p>
                     <h1 className="mobile-heading">
@@ -59,9 +59,9 @@ const HeroMobile = () => {
                 </div>
 
                 {/* --- Buttons: Animates from Right (with extra delay) --- */}
-                <div className={`buttons ${show ? "animate-right" : ""}`} style={{ transitionDelay: '0.2s' }}>
-                    <button className="btn-primary">Get In Touch →</button>
-                    <button className="btn-outline">Download CV</button>
+                <div className={`mobile-buttons ${show ? "animate-right" : ""}`} style={{ transitionDelay: '0.2s' }}>
+                    <button className="mobile-btn-primary">Get In Touch →</button>
+                    <button className="mobile-btn-outline">Download CV</button>
                 </div>
             </div>
         </section>
