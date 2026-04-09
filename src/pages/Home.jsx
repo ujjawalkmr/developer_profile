@@ -1,5 +1,4 @@
 import { useState, useEffect, Suspense, lazy } from "react";
-import AboutMobile from "../components/AboutMobile";
 
 const Navbar = lazy(() => import("../components/Navbar"));
 const Hero = lazy(() => import("../components/Hero"));
@@ -11,6 +10,8 @@ const Education = lazy(() => import("../components/Education"));
 const Experience = lazy(() => import("../components/Experience"));
 const Contact = lazy(() => import("../components/Contact"));
 const HeroMobile = lazy(() => import("../components/HeroMobile"));
+const AboutMobile=lazy(()=>import("../components/AboutMobile"));
+const SkillMobile=lazy(()=>import("../components/SkillMobile"))
 
 /* ✅ SAFE MOBILE HOOK */
 function useIsMobile(breakpoint = 1000) {
@@ -68,7 +69,9 @@ const Home = () => {
       </Suspense>
 
       <Suspense fallback={<div className="loader">Loading Skills...</div>}>
-        <Skills />
+                       {isMobile ? <SkillMobile /> : <Skills />}
+
+        {/* <Skills /> */}
       </Suspense>
 
       <Suspense fallback={<div className="loader">Loading Service...</div>}>
