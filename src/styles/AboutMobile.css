@@ -1,0 +1,180 @@
+.about-mobile {
+  /* width: 100%; */
+  /* min-height: 100vh; */
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  /* background: #0f172a; */
+  padding-left:  30px;
+    padding-right:  30px;
+
+  overflow-x: hidden;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* STACK WRAPPER */
+.about-mobile-wrapper {
+  position: relative;
+  width: 100%;
+  height: 420px;
+
+  padding: 0 40px; /* 👈 allows blur to show on sides */
+  box-sizing: border-box;
+}
+
+/* =========================
+   TOP (BLUR BACKGROUND CARD)
+========================= */
+.legacy-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  border-radius: 18px;
+
+  background-size: cover;
+  background-position: center;
+
+  filter: brightness(0.4) blur(2px);
+  z-index: 1;
+
+
+  transform: translateX(-50px);
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+.legacy-bg.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* TEXT ON TOP */
+.about-mobile-overlay {
+  position: absolute;
+top: 0;
+  left: 0; 
+    width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index:1;
+  text-align: center;
+  /* padding: 10px; */
+
+
+  transform: translateY(-50px);
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+.about-mobile-overlay.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+
+.about-mobile-overlay h1 {
+font-size: clamp(32px, 8vw, 70px);
+  font-weight: bold;
+  line-height: 1.2;
+  color: #00e0ff;
+  justify-content: center;
+  align-items: center;
+}
+
+/* =========================
+   BOTTOM IMAGE CARD
+========================= */
+.about-mobile-card {
+  position: absolute;
+  bottom: 0;
+
+  width: 85%; /* 👈 smaller than background */
+  left: 50%;
+  /* transform: translateX(-50%); */
+
+  height: 60%;
+  border-radius: 18px;
+  overflow: hidden;
+
+  z-index: 3;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+
+
+  transform: translateX(-50px);
+  opacity: 0;
+  transition: all 0.8s ease;
+
+}
+
+.about-mobile-card.show {
+  transform: translateX(-50%);
+  opacity: 1;
+}
+
+/* IMAGE INSIDE CARD */
+.about-mobile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+}
+
+
+
+/* about text content */
+.mobile-about-content {
+  transform: translateX(120px);
+  opacity: 0;
+  transition: all 0.8s ease 0.2s; /* delay for text */
+}
+
+.mobile-about-content.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+.mobile-about-content h2{
+   margin-top: 20px;
+   margin-bottom: 5px;
+       font-size: clamp(20px, 2.5vw, 24px); 
+         color: #00e0ff;
+ 
+
+    /* text-align: center; */
+
+}
+.mobile-about-content p{
+      font-size: clamp(12px, 2.5vw, 14px);  /* 👈 key change */
+      margin-bottom: 10px;
+      color: #bdafe4;
+
+}
+.mobile-about-content h3{
+  margin-bottom: 3px;
+    color: #00e0ff;
+
+}
+.mobile-about-tags {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.mobile-about-tags span {
+  background: #7b61ff;
+  padding: clamp(6px, 1.5vw, 8px) clamp(8px, 3vw, 8px);
+  border-radius: 20px;
+  font-size: 14px;
+  transition: 0.3s;
+  cursor: pointer;
+    font-size: clamp(12px, 2.5vw, 14px);  /* 👈 key change */
+
+}
+
+.mobile-about-tags span:hover {
+  background: #5a45d1;
+  transform: translateY(-3px);
+}
