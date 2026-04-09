@@ -13,7 +13,7 @@ const Contact = lazy(() => import("../components/Contact"));
 const HeroMobile = lazy(() => import("../components/HeroMobile"));
 
 /* ✅ SAFE MOBILE HOOK */
-function useIsMobile(breakpoint = 868) {
+function useIsMobile(breakpoint = 1000) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
