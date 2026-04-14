@@ -21,7 +21,35 @@ import {
 
 const SkillMobile = () => {
   const [activeSkill, setActiveSkill] = useState(null);
+  const iconColorMap = {
+    "Node.js": "#3C873A",
+    "Java": "#007396",
+    "Dart": "#0175C2",
 
+    "Spring Boot": "#6DB33F",
+    "Express js": "#000000",
+    "REST APIs": "#00A6A6",
+
+    "React": "#61DBFB",
+    "JavaScript": "#F7DF1E",
+    "Flutter": "#02569B",
+    "HTML & CSS": "#E34F26",
+
+    "MySQL": "#00758F",
+    "MongoDB": "#4DB33D",
+    "PostgreSQL": "#336791",
+
+    "AWS": "#FF9900",
+    "Docker": "#2496ED",
+    "Google cloud": "#4285F4",
+    "Microservices": "#9C27B0",
+    "Load Balancer": "#00BCD4",
+
+    "GitHub": "#181717",
+    "Postman": "#FF6C37",
+    "VS Code": "#007ACC",
+    "Jira": "#0052CC"
+  };
   const skills = [
     { name: 'Backend', icon: '🎨' },
     { name: 'Frontend', icon: '⚛️' },
@@ -100,7 +128,8 @@ const SkillMobile = () => {
 
   return (
     <section className="mobile-skills-container">
-
+      <div className="skill-heading">Skills</div>
+      <div className='underline-skill'></div>
       <div className="sun-wrapper">
 
         {/* Center Image */}
@@ -146,8 +175,9 @@ const SkillMobile = () => {
             <ul>
               {activeSkill.items.map((item, i) => (
                 <li key={i} className="modal-item">
-                  <span className="modal-icon">{item.icon}</span>
-                  <span>{item.name}</span>
+                  <span className="modal-icon"
+                    style={{ color: iconColorMap[item.name] || "#fff" }}>{item.icon}</span>
+                  <span className='modal-icons-name'>{item.name}</span>
                 </li>
               ))}
             </ul>
