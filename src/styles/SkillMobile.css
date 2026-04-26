@@ -12,7 +12,7 @@
 .skill-heading {
   text-align: center;
   margin-top: 40px;
-  font-size: clamp(32px, 8vw, 70px);
+  font-size: clamp(32px, 8vw, 50px);
   font-weight: bold;
   line-height: 1.2;
   color: #00e0ff;
@@ -21,7 +21,7 @@
 }
 .underline-skill{
 
-   width: 160px;
+   width: 140px;
     height: 4px;
     background: #7b61ff;
   margin-bottom: 40px;
@@ -212,6 +212,7 @@
   z-index: 999;
   opacity: 1;
     transition: opacity 0.6s ease;
+
     
 
   
@@ -294,3 +295,21 @@
 .modal-icons-name{
   color: #1aadc1;
 }
+
+
+
+/* Animation */
+
+/* Default (hidden - left side) */
+.mobile-skills-container {
+  opacity: 0;
+  transform: translateX(-120px);
+  transition: all 0.8s ease ;
+}
+
+/* When visible (animate left → right) */
+.mobile-skills-container.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
