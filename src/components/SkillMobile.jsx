@@ -27,6 +27,7 @@ const SkillMobile = () => {
   const [activeSkill, setActiveSkill] = useState(null);
   const [show, setShow] = useState(false);
   const sectionRef = useRef(null);
+  const [isClosing, setIsClosing] = useState(false);
 
   const iconColorMap = {
     "Node.js": "#3C873A",
@@ -64,7 +65,13 @@ const SkillMobile = () => {
     { name: "Cloud", icon: "✒️" },
     { name: "Tools", icon: "🛠️" },
   ];
-
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setActiveSkill(null);
+      setIsClosing(false);
+    }, 300); // match CSS animation duration
+  };
   const handleClick = (name) => {
     if (name === "Backend") {
       setActiveSkill({
@@ -122,76 +129,76 @@ const SkillMobile = () => {
     }
   };
 
-useEffect(() => {
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      setShow(entry.isIntersecting && entry.intersectionRatio > 0.2);
-    },
-    {
-      threshold: 0.3,
-    }
-  );
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShow(entry.isIntersecting && entry.intersectionRatio > 0.2);
+      },
+      {
+        threshold: 0.3,
+      },
+    );
 
-  const el = sectionRef.current;
-  if (el) observer.observe(el);
+    const el = sectionRef.current;
+    if (el) observer.observe(el);
 
-  return () => {
-    if (el) observer.unobserve(el);
-    observer.disconnect();
-  };
-}, []);
+    return () => {
+      if (el) observer.unobserve(el);
+      observer.disconnect();
+    };
+  }, []);
+  
   return (
     <section
       ref={sectionRef}
-      className={`mobile-skills-container ${show ? "show" : ""}`}
+      className="mobile-skills-container "
     >
-      <div className="skill-heading">Skills</div>
-      <div className="underline-skill"></div>
-      <div className={`sun-wrapper ${show ? "show" : ""}`}>
-        {/* Center Image */}
-        <div className="center-profile">
-          <img
-            src="/assets/uk_about.jpeg"
-            alt="Profile"
-            className="profile-img"
-          />
+      <div className={`mobile-skill-content ${show ? "show" : ""}`}>
+        <div className="skill-header">
+          <div className="skill-heading">Skills</div>
+          <div className="underline-skill"></div>
         </div>
-
-        {/* Skills */}
-        {skills.map((skill, index) => (
-          <div
-            key={index}
-            className="mobile-skill-ray"
-            style={{ "--i": index, "--total": skills.length }}
-          >
-            <div
-              className="mobile-skill-node clickable"
-              onClick={() => handleClick(skill.name)}
-            >
-              <span className="mobile-skill-icon">{skill.icon}</span>
-              <span className="mobile-skill-name">{skill.name}</span>
-            </div>
+        <div className={`sun-wrapper ${show ? "show" : ""}`}>
+          {/* Center Image */}
+          <div className="center-profile">
+            <img
+              src="/assets/uk_about.jpeg"
+              alt="Profile"
+              className="profile-img"
+            />
           </div>
-        ))}
+
+          {/* Skills */}
+          {skills.map((skill, index) => (
+            <div
+              key={index}
+              className="mobile-skill-ray"
+              style={{ "--i": index, "--total": skills.length }}
+            >
+              <div
+                className="mobile-skill-node clickable"
+                onClick={() => handleClick(skill.name)}
+              >
+                <span className="mobile-skill-icon">{skill.icon}</span>
+                <span className="mobile-skill-name">{skill.name}</span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* MODAL */}
       {activeSkill && (
         <div
-          className="skill-modal-overlay"
-          onClick={() => setActiveSkill(null)}
+          className={`skill-modal-overlay ${isClosing ? "fade-out" : "fade-in"}`}
+          onClick={handleClose}
         >
           <div
-            className="skill-modal"
+            className={`skill-modal ${isClosing ? "scale-out" : "scale-in"}`}
             onClick={(e) => e.stopPropagation()}
           >
             <h2>{activeSkill.title}</h2>
 
-            {/* <ul>
-              {activeSkill.items.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul> */}
             <ul>
               {activeSkill.items.map((item, i) => (
                 <li
@@ -209,7 +216,7 @@ useEffect(() => {
               ))}
             </ul>
 
-            <button onClick={() => setActiveSkill(null)}>Close</button>
+            <button onClick={handleClose}>Close</button>
           </div>
         </div>
       )}
