@@ -147,7 +147,22 @@ const SkillMobile = () => {
       observer.disconnect();
     };
   }, []);
-  
+  useEffect(() => {
+    if (activeSkill) {
+      document.documentElement.style.overflow = "hidden"; // html
+      document.body.style.overflow = "hidden";            // body
+    } else {
+      document.documentElement.style.overflow = "auto";
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.documentElement.style.overflow = "auto";
+      document.body.style.overflow = "auto";
+    };
+  }, [activeSkill]);
+
+
   return (
     <section
       ref={sectionRef}
