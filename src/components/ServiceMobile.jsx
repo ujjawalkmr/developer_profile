@@ -113,110 +113,110 @@ const ServiceMobile = () => {
   }, [selectedService]);
 
     useEffect(() => {
-  const el = sectionRef.current;
+      const el = sectionRef.current;
 
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      const ratio = entry.intersectionRatio;
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setShow(true);
+          } else {
+            setShow(false);
+          }
+        },
+        {
+          threshold: 0.15,
+        },
+      );
 
-      if (ratio >= 0.1) {
-        setShow(true);   // show slowly
-      } else if (ratio <= 0.05) {
-        setShow(false);  // hide slowly
-      }
-    },
-    {
-      threshold: [0, 0.05, 0.1, 0.3, 0.6, 1],
-    }
-  );
+      if (el) observer.observe(el);
 
-  if (el) observer.observe(el);
+      return () => {
+        if (el) observer.unobserve(el);
+      };
+    }, []);
 
-  return () => {
-    if (el) observer.unobserve(el);
-  };
-}, []);
-
-  return (
-    <section
-      ref={sectionRef}
-      className="mobile-services-section"
-    >
-<div className={`mobile-main-service ${show ? "show" : ""}`}>        <h2 className="mobile-services-title">OUR SERVICES</h2>
-        <div className="mobile-services-underline"></div>
-        <div className="mobile-services-container">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="mobile-service-card"
-            >
-              {/* Top Orange Tab Decor */}
-              <div className="mobile-card-tab"></div>
-
-              <div className="mobile-card-header">
-                <div className="mobile-icon-circle">
-                  <span className="mobile-main-icon">{service.icon}</span>
-                  <div className="mobile-icon-ring"></div>
-                </div>
-              </div>
-
-              <div className="mobile-card-body">
-                {/* Side Orange Badge Decor */}
-                <div className="mobile-side-badge"></div>
-
-                <h3>{service.title}</h3>
-                <ul>
-                  {service.features.map((feature, i) => (
-                    <li key={i}>{feature}</li>
-                  ))}
-                </ul>
-              </div>
-              <a
-                href="#"
-                className="mobile-learn-more"
-                onClick={(e) => openModal(e, service)}
+    return (
+      <section
+        ref={sectionRef}
+        className="mobile-services-section"
+      >
+        <div className={`mobile-main-service ${show ? "show" : ""}`}>
+          <h2 className="mobile-services-title">OUR SERVICES</h2>
+          <div className="mobile-services-underline"></div>
+          <div className="mobile-services-container">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className={`mobile-service-card ${show ? "card-show" : "card-hide"}`}
+                style={{ transitionDelay: `${index * 0.2}s` }}
               >
-                Learn more →
-              </a>
-            </div>
-          ))}
-        </div>
-        {/* --- Dialog / Modal Overlay --- */}
+                {/* Top Orange Tab Decor */}
+                <div className="mobile-card-tab"></div>
 
-        {selectedService && (
-          <div
-            className={`mobile-service-modal-overlay ${
-              isOpen ? "open" : ""
-            } ${isClosing ? "closing" : ""}`}
-            onClick={closeModal}
-          >
-            <div
-              className="mobile-service-modal-content"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                className="mobile-service-modal-close"
-                onClick={closeModal}
-              >
-                &times;
-              </button>
-              <div className="mobile-service-modal-scroll">
-                <div className="mobile-service-modal-header">
-                  <span className="mobile-service-modal-icon">
-                    {selectedService.icon}
-                  </span>
-                  <h2>{selectedService.title}</h2>
+                <div className="mobile-card-header">
+                  <div className="mobile-icon-circle">
+                    <span className="mobile-main-icon">{service.icon}</span>
+                    <div className="mobile-icon-ring"></div>
+                  </div>
                 </div>
-                <div className="mobile-service-modal-body">
-                  <p>{selectedService.description}</p>
+
+                <div className="mobile-card-body">
+                  {/* Side Orange Badge Decor */}
+                  <div className="mobile-side-badge"></div>
+
+                  <h3>{service.title}</h3>
+                  <ul>
+                    {service.features.map((feature, i) => (
+                      <li key={i}>{feature}</li>
+                    ))}
+                  </ul>
                 </div>
+                <a
+                  href="#"
+                  className="mobile-learn-more"
+                  onClick={(e) => openModal(e, service)}
+                >
+                  Learn more →
+                </a>
               </div>
-            </div>
+            ))}
           </div>
-        )}
-      </div>
-    </section>
-  );
+          {/* --- Dialog / Modal Overlay --- */}
+
+          {selectedService && (
+            <div
+              className={`mobile-service-modal-overlay ${
+                isOpen ? "open" : ""
+              } ${isClosing ? "closing" : ""}`}
+              onClick={closeModal}
+            >
+              <div
+                className="mobile-service-modal-content"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  className="mobile-service-modal-close"
+                  onClick={closeModal}
+                >
+                  &times;
+                </button>
+                <div className="mobile-service-modal-scroll">
+                  <div className="mobile-service-modal-header">
+                    <span className="mobile-service-modal-icon">
+                      {selectedService.icon}
+                    </span>
+                    <h2>{selectedService.title}</h2>
+                  </div>
+                  <div className="mobile-service-modal-body">
+                    <p>{selectedService.description}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+    );
 };
 
 export default ServiceMobile;

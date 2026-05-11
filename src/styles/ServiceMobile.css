@@ -44,34 +44,29 @@
 }
 
 /* --- THE SERVICE CARD --- */
-.mobile-service-card {
+/* .mobile-service-card {
   position: relative;
   background: #26b2f4;
 
-  /* Sizing so you see one card and a hint of the next */
   flex: 0 0 50%;
   scroll-snap-align: center;
 
   border-radius: 30px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
   padding-bottom: 15px;
-  /* border: 1px solid #eee; */
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
   z-index: 1;
-  margin: 10px 0; /* Adds space above and below each card */
+  margin: 10px 0; 
 }
 .mobile-service-card:hover {
-  /* Increases size by 5%. Adjust to 1.1 for 10% if you want it bigger */
   transform: scale(1.05);
 
-  /* Increases shadow to give it a "lifting" effect */
   box-shadow: 0 20px 40px rgba(0, 224, 255, 0.3);
 
-  /* Ensures the hovered card stays on top of others */
   z-index: 1;
-}
+} */
 
 /* --- DECORATIVE ELEMENTS --- */
 .mobile-card-tab {
@@ -314,14 +309,93 @@
 
 /* ================= ANIMATIONS ================= */
 /* BASE (hidden state) */
-.mobile-main-service {
-  opacity: 0;
-  transform: translateY(60px) scale(0.9);
-  transition: all 0.8s ease;
+
+.mobile-services-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  scroll-behavior: smooth;
 }
 
-/* SHOW (like your skills animation) */
-.mobile-main-service.show {
+/* Initial hidden state */
+.mobile-service-card {
+  position: relative;
+  background: #26b2f4;
+
+  flex: 0 0 50%;
+  scroll-snap-align: center;
+
+  border-radius: 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  padding-bottom: 15px;
+  margin: 10px 0;
+
+  z-index: 1;
+
+  opacity: 0;
+
+  /* BOTH animation + normal scale */
+  transform: translateX(60px) scale(1);
+
+  transition:
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 1s ease,
+    box-shadow 0.3s ease;
+
+  will-change: transform, opacity;
+}
+
+/* SHOW ANIMATION */
+.mobile-service-card.card-show {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateX(0) scale(1);
+}
+
+/* HIDE ANIMATION */
+.mobile-service-card.card-hide {
+  opacity: 0;
+  transform: translateX(60px) scale(1);
+}
+
+/* HOVER EFFECT */
+.mobile-service-card.card-show:hover {
+  transform: translateX(0) scale(1.05);
+
+  box-shadow: 0 20px 40px rgba(0, 224, 255, 0.3);
+
+  z-index: 2;
+}
+
+
+
+
+
+
+
+.mobile-services-title {
+  opacity: 0;
+  transform: translateX(150px);
+
+  transition:
+    transform 0.7s ease,
+    opacity 0.7s ease;
+}
+
+/* When visible */
+.mobile-main-service.show .mobile-services-title {
+  opacity: 1;
+  transform: translateX(0);
+}
+.mobile-services-underline {
+  opacity: 0;
+  transform: translateX(150px);
+
+  transition:
+    transform 0.8s ease,
+    opacity 0.8s ease;
+}
+
+.mobile-main-service.show .mobile-services-underline {
+  opacity: 1;
+  transform: translateX(0);
 }
