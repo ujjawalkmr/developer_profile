@@ -1,0 +1,401 @@
+/* --- SECTION CONTAINER --- */
+.mobile-services-section {
+  padding: 0px 20px;
+  /* background-color: #d27015; */
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+.mobile-services-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #00e0ff;
+  margin-top: 40px;
+
+  letter-spacing: 1px;
+  
+}
+.mobile-services-underline{
+    width: 220px;
+  height: 4px;
+  background: #7b61ff;
+  margin: 5px auto 40px; /* 👈 THIS centers it */
+  border-radius: 5px;
+
+}
+
+/* --- THE ROW CONTAINER --- */
+.mobile-services-container {
+  display: flex;
+  flex-direction: row; /* Aligns 3 cards in one row */
+  gap: 20px;
+  align-items: stretch;
+  padding: 0px 20px 60px 20px;
+  /* Enables horizontal swiping */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar for a clean mobile app look */
+.mobile-services-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- THE SERVICE CARD --- */
+/* .mobile-service-card {
+  position: relative;
+  background: #26b2f4;
+
+  flex: 0 0 50%;
+  scroll-snap-align: center;
+
+  border-radius: 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  padding-bottom: 15px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  z-index: 1;
+  margin: 10px 0; 
+}
+.mobile-service-card:hover {
+  transform: scale(1.05);
+
+  box-shadow: 0 20px 40px rgba(0, 224, 255, 0.3);
+
+  z-index: 1;
+} */
+
+/* --- DECORATIVE ELEMENTS --- */
+.mobile-card-tab {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 20px;
+  background: linear-gradient(to right, #ff9a44, #ff6a00);
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.mobile-card-header {
+  background: #1a2a48;
+  height: 140px; /* Adjusted height for mobile screens */
+  border-radius: 30px 30px 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.mobile-icon-circle {
+  position: relative;
+  width: 95px;
+  height: 95px;
+  background: #1a2a48;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.mobile-icon-ring {
+  position: absolute;
+  inset: -5px;
+  border: 4px solid #ff9a44;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.mobile-main-icon {
+  font-size: 2.5rem;
+}
+
+/* --- CARD CONTENT --- */
+.mobile-card-body {
+  padding: 25px 20px;
+  text-align: left;
+  position: relative;
+}
+
+.mobile-side-badge {
+  position: absolute;
+  left: -10px;
+  top: 25px;
+  width: 20px;
+  height: 35px;
+  background: linear-gradient(to bottom, #ff9a44, #ff6a00);
+  border-radius: 6px;
+}
+
+.mobile-card-body h3 {
+  font-size: 1.2rem;
+  color: #1a2a48;
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.mobile-card-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-card-body li {
+  font-size: 0.85rem;
+  color: #4a5568;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.mobile-card-body li::before {
+  content: "•";
+  color: #1a2a48;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+.mobile-learn-more {
+  color: #7c4dff;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 0.85rem;
+  transition: 0.2s;
+}
+.mobile-learn-more:hover {
+  text-decoration: underline;
+}
+
+/* Modal Overlay Background */
+
+/* ================= OVERLAY ================= */
+.mobile-service-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0); /* start transparent */
+  opacity: 0;
+
+  transition: opacity 0.7s ease, background 0.7s ease;
+  z-index: 9999;
+  padding: 20px;
+
+  /* backdrop-filter: blur(5px);  */
+}
+
+/* OPEN */
+.mobile-service-modal-overlay.open {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* CLOSE */
+.mobile-service-modal-overlay.closing {
+  opacity: 0;
+}
+
+
+/* ================= MODAL BOX ================= */
+.mobile-service-modal-content {
+  background: #0c1e30;
+  width: 100%;
+  max-width: 400px;
+  max-height: 80vh;
+  border-radius: 30px;
+  position: relative;
+  padding: 30px;
+
+  overflow-y: auto;
+
+  /* hide scrollbar */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.mobile-service-modal-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* 🔥 INITIAL STATE (hidden) */
+.mobile-service-modal-content {
+  transform: translateY(80px) scale(0.9);
+  opacity: 0;
+
+  transition: 
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.9s ease;
+}
+
+/* 🔥 OPEN (slow rise + zoom in) */
+.mobile-service-modal-overlay.open .mobile-service-modal-content {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* 🔥 CLOSE (slow drop + shrink) */
+.mobile-service-modal-overlay.closing .mobile-service-modal-content {
+  transform: translateY(80px) scale(0.85);
+  opacity: 0;
+}
+
+
+/* ================= CLOSE BUTTON ================= */
+.mobile-service-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #1fc4d3;
+  cursor: pointer;
+}
+
+
+/* ================= HEADER ================= */
+.mobile-service-modal-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.mobile-service-modal-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.mobile-service-modal-header h2 {
+  color: #1fc4d3;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+
+/* ================= BODY ================= */
+.mobile-service-modal-body p {
+  color: #1fc4d3;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  text-align: justify;
+  white-space: pre-line;
+}
+
+
+/* ================= SCROLL AREA ================= */
+.mobile-service-modal-scroll {
+  max-height: 80vh;
+  overflow-y: auto;
+  padding-bottom: 20px;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.mobile-service-modal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* ================= ANIMATIONS ================= */
+/* BASE (hidden state) */
+
+.mobile-services-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  scroll-behavior: smooth;
+}
+
+/* Initial hidden state */
+.mobile-service-card {
+  position: relative;
+  background: #26b2f4;
+
+  flex: 0 0 50%;
+  scroll-snap-align: center;
+
+  border-radius: 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  padding-bottom: 15px;
+  margin: 10px 0;
+
+  z-index: 1;
+
+  opacity: 0;
+
+  /* BOTH animation + normal scale */
+  transform: translateX(60px) scale(1);
+
+  transition:
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 1s ease,
+    box-shadow 0.3s ease;
+
+  will-change: transform, opacity;
+}
+
+/* SHOW ANIMATION */
+.mobile-service-card.card-show {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+/* HIDE ANIMATION */
+.mobile-service-card.card-hide {
+  opacity: 0;
+  transform: translateX(60px) scale(1);
+}
+
+/* HOVER EFFECT */
+.mobile-service-card.card-show:hover {
+  transform: translateX(0) scale(1.05);
+
+  box-shadow: 0 20px 40px rgba(0, 224, 255, 0.3);
+
+  z-index: 2;
+}
+
+
+
+
+
+
+
+.mobile-services-title {
+  opacity: 0;
+  transform: translateX(150px);
+
+  transition:
+    transform 0.7s ease,
+    opacity 0.7s ease;
+}
+
+/* When visible */
+.mobile-main-service.show .mobile-services-title {
+  opacity: 1;
+  transform: translateX(0);
+}
+.mobile-services-underline {
+  opacity: 0;
+  transform: translateX(150px);
+
+  transition:
+    transform 0.8s ease,
+    opacity 0.8s ease;
+}
+
+.mobile-main-service.show .mobile-services-underline {
+  opacity: 1;
+  transform: translateX(0);
+}
