@@ -241,6 +241,7 @@
   z-index: 9999;
 
   padding: 20px;
+  
 }
 
 /* OPEN */
@@ -256,6 +257,12 @@
 
 /* ================= MODAL BOX ================= */
 .mobile-project-modal-content {
+
+
+display: flex;
+flex-direction: column;
+
+  
   background: #0c1e30;
 
   width: 100%;
@@ -279,12 +286,20 @@
     opacity 0.9s ease;
 
   scrollbar-width: none;
+  overflow: hidden;
 }
 
 .mobile-project-modal-content::-webkit-scrollbar {
   display: none;
 }
-
+/* Divider */
+.mobile-project-divider {
+  width: 100%;
+  height: 1px;
+  background: #e5e5e5;
+  margin: 0px 0 20px;
+  flex-shrink: 0;
+}
 /* OPEN */
 .mobile-project-modal-overlay.open .mobile-project-modal-content {
   transform: translateY(0) scale(1);
@@ -330,7 +345,7 @@
 }
 
 .mobile-project-modal-header h2 {
-  color: #1fc4d3;
+  color: #bdafe4;
 
   font-size: 1.4rem;
 
@@ -379,12 +394,86 @@
   font-size: 1.2rem;
 }
 
-.mobile-project-description {
-  color: #d7e7ff;
+ 
+.mobile-project-modal-scroll {
+  flex: 1;
 
-  line-height: 1.7;
+  overflow-y: auto;
+  overflow-x: hidden;
 
-  font-size: 0.92rem;
+  padding-right: 5px;
 
-  white-space: pre-line;
+  scrollbar-width: none;
+}
+
+.mobile-project-modal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+
+
+.mobile-project-tabs {
+  display: flex;
+  gap: 10px;
+ overflow-x: auto;
+  overflow-y: hidden;  margin-bottom: 20px;
+  padding-bottom: 4px;
+  padding-top: 20px;
+    flex-shrink: 0;
+    
+
+}
+
+.mobile-project-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.mobile-project-tab-btn {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: #477b9d;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s ease;
+    color: #9a86d2;
+
+}
+
+.mobile-project-tab-btn.active {
+  /* background: #000; */
+  color: #fff;
+}
+
+.mobile-project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+
+
+
+
+
+.animate-show {
+  opacity: 1;
+  transform: translateX(0);
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.animate-changing {
+  opacity: 0;
+  transform: translateX(40px);
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
