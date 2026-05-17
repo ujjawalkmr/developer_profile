@@ -41,7 +41,7 @@
 }
 
 /* ================= CARD ================= */
-.mobile-project-card {
+/* .mobile-project-card {
   position: relative;
   background: #26b2f4;
 
@@ -63,7 +63,7 @@
 
   box-shadow: 0 20px 40px rgba(0, 224, 255, 0.3);
   z-index: 1;
-}
+} */
 
 /* ================= TOP TAB ================= */
 .mobile-card-tab-project {
@@ -476,4 +476,104 @@ flex-direction: column;
   transition:
     opacity 0.2s ease,
     transform 0.2s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.mobile-project-card {
+  position: relative;
+  background: #26b2f4;
+
+  flex: 0 0 50%;
+  scroll-snap-align: center;
+
+  border-radius: 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  padding-bottom: 15px;
+  margin: 10px 0;
+  z-index: 1;
+
+  opacity: 0;
+  transform: translateY(80px) scale(0.95);
+
+  transition:
+    opacity 1.8s ease,
+    transform 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
+}
+
+/* Show Animation */
+.mobile-project-card.show-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Hide Animation */
+.mobile-project-card.hide-card {
+  opacity: 0;
+  transform: translateY(80px) scale(0.95);
+}
+
+/* Hover Effect */
+.mobile-project-card.show-card:hover {
+  transform: translateY(0) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 224, 255, 0.3);
+}
+
+
+/* ---------- TITLE ---------- */
+
+.mobile-project-title {
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 1.5s ease,
+    transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobile-project-title.title-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-project-title.title-hide {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+/* ---------- UNDERLINE ---------- */
+
+.mobile-project-underline {
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition:
+    opacity 1.5s ease,
+    transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+
+  transition-delay: 0.4s;
+}
+
+.mobile-project-underline.underline-show {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.mobile-project-underline.underline-hide {
+  opacity: 0;
+  transform: scaleX(0);
 }

@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../styles/ProjectMobile.css";
 
-
 const categories = [
-  { id: 1, title: "Websites", icon: "🌐", count: 3 ,},
+  { id: 1, title: "Websites", icon: "🌐", count: 3 },
   { id: 2, title: "Android Apps", icon: "🤖", count: 1 },
   { id: 3, title: "iOS Apps", icon: "🍎", count: 1 },
   { id: 4, title: "Video Editing", icon: "🎬", count: 4 },
@@ -263,20 +262,57 @@ const ProjectMobile = () => {
       document.body.style.overflow = "auto";
     };
   }, [selectedCategory]);
+const [showCards, setShowCards] = useState(false);
 
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      setShowCards(entry.isIntersecting);
+    },
+    {
+      threshold: 0.2,
+    }
+  );
+
+  if (sectionRef.current) {
+    observer.observe(sectionRef.current);
+  }
+
+  return () => {
+    if (sectionRef.current) {
+      observer.unobserve(sectionRef.current);
+    }
+  };
+}, []);
   return (
     <section
       ref={sectionRef}
       className="mobile-project-section"
     >
       <div className="mobile-main-service">
-        <h2 className="mobile-project-title">OUR SERVICES</h2>
-        <div className="mobile-project-underline"></div>
+        <h2
+  className={`mobile-project-title ${
+    showCards ? "title-show" : "title-hide"
+  }`}
+>
+  MY PROJECT
+</h2>
+
+<div
+  className={`mobile-project-underline ${
+    showCards ? "underline-show" : "underline-hide"
+  }`}
+></div>
         <div className="mobile-project-container">
           {categories.map((category, index) => (
             <div
               key={index}
-              className="mobile-project-card"
+              className={`mobile-project-card ${
+                showCards ? "show-card" : "hide-card"
+              }`}
+              style={{
+                transitionDelay: `${index * 0.3}s`,
+              }}
             >
               {/* Top Orange Tab Decor */}
               <div className="mobile-card-tab-project"></div>
@@ -309,96 +345,86 @@ const ProjectMobile = () => {
         </div>
         {/* --- Dialog / Modal Overlay --- */}
         {selectedCategory && (
-  <div
-    className={`mobile-project-modal-overlay ${
-      isOpen ? "open" : ""
-    } ${isClosing ? "closing" : ""}`}
-    onClick={closeModal}
-  >
-    <div
-      className="mobile-project-modal-content"
-      onClick={(e) => e.stopPropagation()}
-    >
-      {/* Close Button */}
-      <button
-        className="mobile-project-modal-close"
-        onClick={closeModal}
-      >
-        &times;
-      </button>
-
-      {/* Horizontal Scroll Tabs */}
-      <div className="mobile-project-tabs-wrapper">
-        <div className="mobile-project-tabs">
-          {projectsData
-            .filter(
-              (project) =>
-                project.catId === selectedCategory.id
-            )
-            .map((project) => (
+          <div
+            className={`mobile-project-modal-overlay ${
+              isOpen ? "open" : ""
+            } ${isClosing ? "closing" : ""}`}
+            onClick={closeModal}
+          >
+            <div
+              className="mobile-project-modal-content"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
               <button
-                key={project.id}
-                className={`mobile-project-tab-btn ${
-                  selectedProject?.id === project.id
-                    ? "active"
-                    : ""
-                }`}
-                onClick={() => {
-  setAnimateContent(true);
-
-  setTimeout(() => {
-    setSelectedProject(project);
-
-    setTimeout(() => {
-      setAnimateContent(false);
-    }, 50);
-  }, 150);
-}}
+                className="mobile-project-modal-close"
+                onClick={closeModal}
               >
-                {project.title}
+                &times;
               </button>
-            ))}
-        </div>
-      </div>
 
-      {/* Divider */}
-      <div className="mobile-project-divider"></div>
+              {/* Horizontal Scroll Tabs */}
+              <div className="mobile-project-tabs-wrapper">
+                <div className="mobile-project-tabs">
+                  {projectsData
+                    .filter((project) => project.catId === selectedCategory.id)
+                    .map((project) => (
+                      <button
+                        key={project.id}
+                        className={`mobile-project-tab-btn ${
+                          selectedProject?.id === project.id ? "active" : ""
+                        }`}
+                        onClick={() => {
+                          setAnimateContent(true);
 
-      {/* Scroll Only Description */}
-      {selectedProject && (
-<div
-  className={`mobile-project-modal-scroll ${
-    animateContent
-      ? "animate-changing"
-      : "animate-show"
-  }`}
->
-          {/* Icon */}
-          <div className="mobile-project-center-icon">
-            {selectedProject.icon}
+                          setTimeout(() => {
+                            setSelectedProject(project);
+
+                            setTimeout(() => {
+                              setAnimateContent(false);
+                            }, 50);
+                          }, 150);
+                        }}
+                      >
+                        {project.title}
+                      </button>
+                    ))}
+                </div>
+              </div>
+
+              {/* Divider */}
+              <div className="mobile-project-divider"></div>
+
+              {/* Scroll Only Description */}
+              {selectedProject && (
+                <div
+                  className={`mobile-project-modal-scroll ${
+                    animateContent ? "animate-changing" : "animate-show"
+                  }`}
+                >
+                  {/* Icon */}
+                  <div className="mobile-project-center-icon">
+                    {selectedProject.icon}
+                  </div>
+
+                  {/* Title */}
+                  <div className="mobile-project-modal-header">
+                    <h2>{selectedProject.title}</h2>
+                  </div>
+
+                  {/* Description */}
+                  <div className="mobile-project-modal-body">
+                    {typeof selectedProject.description === "string" ? (
+                      <p>{selectedProject.description}</p>
+                    ) : (
+                      selectedProject.description
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
-
-          {/* Title */}
-          <div className="mobile-project-modal-header">
-            <h2>{selectedProject.title}</h2>
-          </div>
-
-          {/* Description */}
-          <div className="mobile-project-modal-body">
-            {typeof selectedProject.description ===
-            "string" ? (
-              <p>{selectedProject.description}</p>
-            ) : (
-              selectedProject.description
-            )}
-          </div>
-
-        </div>
-      )}
-    </div>
-  </div>
-)}
-        
+        )}
       </div>
     </section>
   );
