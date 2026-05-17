@@ -1,0 +1,245 @@
+/* Container & Layout Structure */
+.mobile-education-wrapper {
+  width: 100%;
+  /* background-color: #0a111e; */
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.mobile-education-container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mobile-education-title {
+  color: #ffffff;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  padding-left: 0.25rem;
+  letter-spacing: 0.025em;
+}
+
+/* Horizontal Scroll Track Setup */
+.mobile-education-scroll-track {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  padding-bottom: 1.5rem;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* Smooth iOS momentum scrolling */
+  cursor: grab;
+}
+
+.mobile-education-scroll-track:active {
+  cursor: grabbing;
+}
+
+/* Hide Scrollbars Cleanly */
+.mobile-education-scroll-track::-webkit-scrollbar {
+  display: none;
+}
+.mobile-education-scroll-track {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Core Profile Component Card */
+.mobile-education-card {
+  position: relative;
+  flex: none;
+  width: 86vw;             /* Leaves next card peaking on mobile viewports */
+  max-width: 500px;
+  height: 220px;
+  background-color: #54bcf4;
+  border-radius: 35px;
+  overflow: hidden;
+  /* box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6); */
+  scroll-snap-align: center;
+  box-sizing: border-box;
+}
+
+/* Positioned Orange Badges */
+.badge-pill {
+  position: absolute;
+  background-color: #ff7a00;
+  z-index: 25;
+}
+
+.top-pill {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4.5rem;
+  height: 0.85rem;
+  border-bottom-left-radius: 0.6rem;
+  border-bottom-right-radius: 0.6rem;
+}
+
+.left-pill {
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.85rem;
+  height: 3.5rem;
+  border-top-right-radius: 0.6rem;
+  border-bottom-right-radius: 0.6rem;
+}
+
+.right-pill {
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.85rem;
+  height: 3.5rem;
+  border-top-left-radius: 0.6rem;
+  border-bottom-left-radius: 0.6rem;
+}
+
+/* Left Column Panel (Curve Graphic + Globe Ring) */
+.card-left-panel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 45%;
+  background-color: #1b2a47;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Recreates the seamless rightward-facing curve profile */
+  clip-path: ellipse(100% 74% at 0% 50%);
+  -webkit-clip-path: ellipse(100% 74% at 0% 50%);
+}
+
+.globe-outer-ring {
+  position: relative;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  border: 4px solid #a06a3a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.globe-inner-ring {
+  position: absolute;
+  top: 0.25rem;
+  left: 0.25rem;
+  right: 0.25rem;
+  bottom: 0.25rem;
+  border-radius: 50%;
+  border: 2px solid #a06a3a;
+  box-sizing: border-box;
+}
+
+.globe-svg-icon {
+  width: 5.9rem;
+  height: 5.9rem;
+  border-radius: 50%;
+  object-fit: contain;}
+
+/* Right Column Panel (Academic Text Layer) */
+.card-right-panel {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 58%;
+  padding-left: 1.5rem;
+  padding-right: 1.25rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #0d233a;
+  font-family: system-ui, -apple-system, sans-serif;
+  z-index: 5;
+  box-sizing: border-box;
+}
+
+/* Internal Scrollable Module for overlong list bullets */
+.card-scrollable-content {
+  overflow-y: auto;
+  padding-right: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+/* Internal content scrollbar tweak */
+.card-scrollable-content::-webkit-scrollbar {
+  width: 3px;
+}
+.card-scrollable-content::-webkit-scrollbar-thumb {
+  background-color: rgba(13, 35, 58, 0.2);
+  border-radius: 10px;
+}
+
+.academic-years {
+  font-size: 0.7rem;
+  color: #1b2a47;
+  max-width: 190px;
+  margin-top: 4px;
+}
+
+.academic-course {
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: center;
+  opacity: 0.9;
+  line-height: 1.2;
+  margin: 0 auto 0.75rem auto;
+  max-width: 180px;
+}
+
+/* Description Bullets Formatting */
+
+
+
+/* Core Actions Area */
+/* .card-footer-action {
+  text-align: right;
+  align-self: flex-end;
+  margin-top: 0.25rem;
+} */
+
+.learn-more-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #442c74;
+  text-decoration: none;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.learn-more-link:hover {
+  color: #2d1b54;
+  transform: translateX(2px);
+}
+
+/* New custom typography class for the description string */
+.academic-desc-text {
+  margin-top: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #0d233a;
+}
+
+/* Custom styling for the institute layer text link */
+.education-institute-name{
+    font-size: 0.7rem;
+  color: #1b2a47;
+  max-width: 190px;
+}
