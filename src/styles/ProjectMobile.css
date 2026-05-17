@@ -1,0 +1,579 @@
+/* ================= SECTION ================= */
+.mobile-project-section {
+  padding: 0 20px;
+  overflow: hidden;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ================= TITLE ================= */
+.mobile-project-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #00e0ff;
+  margin-top: 40px;
+  letter-spacing: 1px;
+}
+
+.mobile-project-underline {
+  width: 220px;
+  height: 4px;
+  background: #7b61ff;
+  margin: 5px auto 40px;
+  border-radius: 5px;
+}
+
+/* ================= HORIZONTAL SCROLL CONTAINER ================= */
+.mobile-project-container {
+  display: flex;
+  flex-direction: row; /* Aligns 3 cards in one row */
+  gap: 20px;
+  align-items: stretch;
+  padding: 0px 20px 60px 20px;
+  /* Enables horizontal swiping */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-project-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* ================= CARD ================= */
+/* .mobile-project-card {
+  position: relative;
+  background: #26b2f4;
+
+  flex: 0 0 50%;
+  scroll-snap-align: center;
+
+  border-radius: 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  padding-bottom: 15px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  z-index: 1;
+  margin: 10px 0; 
+}
+
+.mobile-project-card:hover {
+  transform: scale(1.05);
+
+  box-shadow: 0 20px 40px rgba(0, 224, 255, 0.3);
+  z-index: 1;
+} */
+
+/* ================= TOP TAB ================= */
+.mobile-card-tab-project {
+  position: absolute;
+
+  top: -10px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 60px;
+  height: 20px;
+
+  background: linear-gradient(to right, #ff9a44, #ff6a00);
+
+  border-radius: 10px;
+
+  z-index: 2;
+}
+
+/* ================= CARD HEADER ================= */
+.mobile-card-header {
+  background: #1a2a48;
+
+  height: 140px;
+
+  border-radius: 30px 30px 0 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+/* ================= ICON ================= */
+.mobile-icon-circle {
+  position: relative;
+
+  width: 95px;
+  height: 95px;
+
+  background: #1a2a48;
+
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-icon-ring {
+  position: absolute;
+
+  inset: -5px;
+
+  border: 4px solid #ff9a44;
+
+  border-radius: 50%;
+
+  opacity: 0.6;
+}
+
+.mobile-main-icon {
+  font-size: 2.5rem;
+}
+
+/* ================= CARD BODY ================= */
+.mobile-card-body {
+  position: relative;
+
+  padding: 25px 20px;
+
+  text-align: left;
+}
+
+/* ================= SIDE BADGE ================= */
+.mobile-side-badge {
+  position: absolute;
+
+  left: -10px;
+  top: 25px;
+
+  width: 20px;
+  height: 35px;
+
+  background: linear-gradient(to bottom, #ff9a44, #ff6a00);
+
+  border-radius: 6px;
+}
+
+/* ================= CARD TITLE ================= */
+.mobile-card-body h3 {
+  font-size: 1.2rem;
+
+  color: #1a2a48;
+
+  text-align: center;
+
+  margin-bottom: 15px;
+
+  font-weight: 700;
+}
+
+/* ================= FEATURES ================= */
+.mobile-card-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-card-body li {
+  position: relative;
+
+  font-size: 0.85rem;
+
+  color: #4a5568;
+
+  margin-bottom: 10px;
+
+  padding-left: 20px;
+}
+
+.mobile-card-body li::before {
+  content: "•";
+
+  position: absolute;
+  left: 0;
+
+  color: #1a2a48;
+
+  font-weight: bold;
+}
+
+/* ================= LEARN MORE ================= */
+.mobile-learn-more {
+  display: inline-block;
+
+  margin-top: 15px;
+
+  color: #7c4dff;
+
+  text-decoration: none;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.mobile-learn-more:hover {
+  text-decoration: underline;
+}
+
+/* ================= MODAL OVERLAY ================= */
+.mobile-project-modal-overlay {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0);
+
+  opacity: 0;
+
+  transition:
+    opacity 0.7s ease,
+    background 0.7s ease;
+
+  z-index: 9999;
+
+  padding: 20px;
+  
+}
+
+/* OPEN */
+.mobile-project-modal-overlay.open {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* CLOSE */
+.mobile-project-modal-overlay.closing {
+  opacity: 0;
+}
+
+/* ================= MODAL BOX ================= */
+.mobile-project-modal-content {
+
+
+display: flex;
+flex-direction: column;
+
+  
+  background: #0c1e30;
+
+  width: 100%;
+  max-width: 400px;
+  max-height: 80vh;
+
+  border-radius: 30px;
+
+  position: relative;
+
+  padding: 30px;
+
+  overflow-y: auto;
+
+  transform: translateY(80px) scale(0.9);
+
+  opacity: 0;
+
+  transition:
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.9s ease;
+
+  scrollbar-width: none;
+  overflow: hidden;
+}
+
+.mobile-project-modal-content::-webkit-scrollbar {
+  display: none;
+}
+/* Divider */
+.mobile-project-divider {
+  width: 100%;
+  height: 1px;
+  background: #e5e5e5;
+  margin: 0px 0 20px;
+  flex-shrink: 0;
+}
+/* OPEN */
+.mobile-project-modal-overlay.open .mobile-project-modal-content {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* CLOSE */
+.mobile-project-modal-overlay.closing .mobile-project-modal-content {
+  transform: translateY(80px) scale(0.85);
+  opacity: 0;
+}
+
+/* ================= CLOSE BUTTON ================= */
+.mobile-project-modal-close {
+  position: absolute;
+
+  top: 15px;
+  right: 20px;
+
+  background: none;
+  border: none;
+
+  font-size: 2rem;
+
+  color: #1fc4d3;
+
+  cursor: pointer;
+}
+
+/* ================= MODAL HEADER ================= */
+.mobile-project-modal-header {
+  text-align: center;
+
+  margin-bottom: 20px;
+}
+
+.mobile-project-modal-icon {
+  display: block;
+
+  font-size: 3rem;
+
+  margin-bottom: 10px;
+}
+
+.mobile-project-modal-header h2 {
+  color: #bdafe4;
+
+  font-size: 1.4rem;
+
+  font-weight: 800;
+}
+
+/* ================= MODAL BODY ================= */
+.mobile-project-modal-body p {
+  color: #1fc4d3;
+
+  line-height: 1.6;
+
+  font-size: 0.95rem;
+
+  text-align: justify;
+
+  white-space: pre-line;
+}
+
+
+
+
+
+
+
+
+
+
+.mobile-project-item {
+  margin-bottom: 30px;
+
+  padding: 20px;
+
+  border-radius: 20px;
+
+  background: rgba(255,255,255,0.05);
+
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.mobile-project-item h3 {
+  color: #00e0ff;
+
+  margin-bottom: 15px;
+
+  font-size: 1.2rem;
+}
+
+ 
+.mobile-project-modal-scroll {
+  flex: 1;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding-right: 5px;
+
+  scrollbar-width: none;
+}
+
+.mobile-project-modal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+
+
+.mobile-project-tabs {
+  display: flex;
+  gap: 10px;
+ overflow-x: auto;
+  overflow-y: hidden;  margin-bottom: 20px;
+  padding-bottom: 4px;
+  padding-top: 20px;
+    flex-shrink: 0;
+    
+
+}
+
+.mobile-project-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.mobile-project-tab-btn {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: #477b9d;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s ease;
+    color: #9a86d2;
+
+}
+
+.mobile-project-tab-btn.active {
+  /* background: #000; */
+  color: #fff;
+}
+
+.mobile-project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+
+
+
+
+
+.animate-show {
+  opacity: 1;
+  transform: translateX(0);
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.animate-changing {
+  opacity: 0;
+  transform: translateX(40px);
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.mobile-project-card {
+  position: relative;
+  background: #26b2f4;
+
+  flex: 0 0 50%;
+  scroll-snap-align: center;
+
+  border-radius: 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  padding-bottom: 15px;
+  margin: 10px 0;
+  z-index: 1;
+
+  opacity: 0;
+  transform: translateY(80px) scale(0.95);
+
+  transition:
+    opacity 1.8s ease,
+    transform 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
+}
+
+/* Show Animation */
+.mobile-project-card.show-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Hide Animation */
+.mobile-project-card.hide-card {
+  opacity: 0;
+  transform: translateY(80px) scale(0.95);
+}
+
+/* Hover Effect */
+.mobile-project-card.show-card:hover {
+  transform: translateY(0) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 224, 255, 0.3);
+}
+
+
+/* ---------- TITLE ---------- */
+
+.mobile-project-title {
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 1.5s ease,
+    transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobile-project-title.title-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-project-title.title-hide {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+/* ---------- UNDERLINE ---------- */
+
+.mobile-project-underline {
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition:
+    opacity 1.5s ease,
+    transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+
+  transition-delay: 0.4s;
+}
+
+.mobile-project-underline.underline-show {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.mobile-project-underline.underline-hide {
+  opacity: 0;
+  transform: scaleX(0);
+}
