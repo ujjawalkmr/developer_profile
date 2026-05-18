@@ -35,90 +35,95 @@ const educationData = [
 
 export default function EducationMobile() {
     return (
-        <section id="education" className="mobile-education-section">
-            <div className="mobile-education-wrapper">
-      <div className="mobile-education-container">
-        <h2 className="mobile-education-title">My Education</h2>
-        
-        {/* Horizontal Scroll Container */}
-       <div className="mobile-education-scroll-track">
-  {educationData.map((card) => (
-    <div key={card.id} className="mobile-education-card">
-      
-      {/* Decorative Pill Badges */}
-      <div className="badge-pill top-pill" />
-      <div className="badge-pill left-pill" />
-      <div className="badge-pill right-pill" />
+      <section
+        id="education"
+        className="mobile-education-section"
+      >
+        <div className="mobile-education-wrapper">
+          <div className="mobile-education-container">
+            <h2 className="mobile-education-title">MY EDUCATION</h2>
+            <div className="mobile-education-underline"></div>
 
-      {/* Left Column (Dark Area with Institute Image inside Globe Rings) */}
-      <div className="card-left-panel">
-        <div className="globe-outer-ring">
-          <div className="globe-inner-ring" />
-          {card.img ? (
-            <img 
-              src={card.img} 
-              alt={`${card.institute} logo`} 
-              className="globe-svg-icon object-contain p-1"
-              onError={(e) => {
-                // Fallback to original globe icon if the image fails to load
-                e.target.style.display = 'none';
-                e.target.nextSibling.style.display = 'block';
-              }}
-            />
-          ) : null}
-          
-          {/* Universal SVG Globe Fallback Element */}
-          <svg 
-            className="globe-svg-icon" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="1.5" 
-            viewBox="0 0 24 24"
-            style={{ display: card.img ? 'none' : 'block' }}
-          >
-            <circle cx="12" cy="12" r="10" />
-            <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
-          </svg>
-        </div>
-      </div>
+            {/* Horizontal Scroll Container */}
+            <div className="mobile-education-scroll-track">
+              {educationData.map((card) => (
+                <div
+                  key={card.id}
+                  className="mobile-education-card"
+                >
+                  {/* Decorative Pill Badges */}
+                  <div className="badge-pill top-pill" />
+                  <div className="badge-pill left-pill" />
+                  <div className="badge-pill right-pill" />
 
-      {/* Right Column (Light Blue Area with Arranged Academic Content) */}
-      <div className="card-right-panel">
-        <div className="card-scrollable-content">
-          {/* 1. Title (Top Header) */}
-          <h3 className="">
-            {card.title}
-          </h3>
-          
-          {/* 2. Institute Name */}
-          <h5 className="education-institute-name">
-            {card.institute}
-          </h5>
-          
-          {/* 3. Academic Year */}
-          <h5 className="academic-years">
-            {card.year}
-          </h5>
+                  {/* Left Column (Dark Area with Institute Image inside Globe Rings) */}
+                  <div className="card-left-panel">
+                    <div className="globe-outer-ring">
+                      <div className="globe-inner-ring" />
+                      {card.img ? (
+                        <img
+                          src={card.img}
+                          alt={`${card.institute} logo`}
+                          className="globe-svg-icon object-contain p-1"
+                          onError={(e) => {
+                            // Fallback to original globe icon if the image fails to load
+                            e.target.style.display = "none";
+                            e.target.nextSibling.style.display = "block";
+                          }}
+                        />
+                      ) : null}
 
-          {/* 4. Description Field */}
-          <p className="academic-desc-text text-xs font-medium leading-relaxed px-1 text-justify">
-            {card.desc}
-          </p>
-        </div>
+                      {/* Universal SVG Globe Fallback Element */}
+                      <svg
+                        className="globe-svg-icon"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        viewBox="0 0 24 24"
+                        style={{ display: card.img ? "none" : "block" }}
+                      >
+                        <circle
+                          cx="12"
+                          cy="12"
+                          r="10"
+                        />
+                        <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+                      </svg>
+                    </div>
+                  </div>
 
-        {/* Footer Interaction Action */}
-        {/* <div className="card-footer-action">
+                  {/* Right Column (Light Blue Area with Arranged Academic Content) */}
+                  <div className="card-right-panel">
+                    <div className="card-scrollable-content">
+                      {/* 1. Title (Top Header) */}
+                      <h3 className="">{card.title}</h3>
+
+                      {/* 2. Institute Name */}
+                      <h5 className="education-institute-name">
+                        {card.institute}
+                      </h5>
+
+                      {/* 3. Academic Year */}
+                      <h5 className="academic-years">{card.year}</h5>
+
+                      {/* 4. Description Field */}
+                      <p className="academic-desc-text text-xs font-medium leading-relaxed px-1 text-justify">
+                        {card.desc}
+                      </p>
+                    </div>
+
+                    {/* Footer Interaction Action */}
+                    {/* <div className="card-footer-action">
           <a href="#details" className="learn-more-link">
             Learn more &rarr;
           </a>
         </div> */}
-      </div>
-
-    </div>
-  ))}
-</div>
-      </div>
-    </div>
-        </section>
-  );
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
 }

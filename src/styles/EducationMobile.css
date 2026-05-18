@@ -8,20 +8,16 @@
 
 }
 .mobile-education-wrapper {
-  width: 100%;
-  /* background-color: #0a111e; */
-  /* padding-top: 2rem; */
-  /* padding: 0px 20px 60px 20px; */
-  /* padding-left: 1rem; */
-  /* padding-right: 1rem; */
-  overflow: hidden;
-  box-sizing: border-box;
+  /* width: 100%; */
+ 
 }
+
 
 .mobile-education-container {
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
+  
 }
 
 .mobile-education-title {
@@ -31,13 +27,20 @@
   margin-top: 40px;
   letter-spacing: 1px;
 }
+.mobile-education-underline {
+  width: 260px;
+  height: 4px;
+  background: #7b61ff;
+  margin: 5px auto 20px;
+  border-radius: 5px;
+}
 
 /* Horizontal Scroll Track Setup */
 .mobile-education-scroll-track {
   display: flex;
   gap: 1.25rem;
   overflow-x: auto;
-  padding-bottom: 1.5rem;
+  padding: 0px 20px 60px 20px;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch; /* Smooth iOS momentum scrolling */
@@ -70,23 +73,44 @@
   /* box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6); */
   scroll-snap-align: center;
   box-sizing: border-box;
+   padding-bottom: 15px;
+  margin: 10px 0;
+    transition:
+     opacity 1.8s ease,
+    transform 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
+
+  transform: translateY(0) scale(0.95);
+  will-change: transform;
+  cursor: pointer;
+}
+
+.mobile-education-card:hover {
+  transform: translateY(0) scale(1);
+
+  /* z-index: 999; */
+
+   box-shadow: 0 20px 40px rgba(0, 224, 255, 0.3);
+
+
 }
 
 /* Positioned Orange Badges */
 .badge-pill {
   position: absolute;
-  background-color: #ff7a00;
-  z-index: 25;
+  background: linear-gradient(to right, #ff9a44, #ff6a00);
+  /* z-index: 25; */
 }
 
 .top-pill {
-  top: 0;
+  top: -10px;
   left: 50%;
   transform: translateX(-50%);
   width: 4.5rem;
-  height: 0.85rem;
+  height: 20px;
   border-bottom-left-radius: 0.6rem;
   border-bottom-right-radius: 0.6rem;
+  z-index: 2;
 }
 
 .left-pill {
@@ -97,6 +121,7 @@
   height: 3.5rem;
   border-top-right-radius: 0.6rem;
   border-bottom-right-radius: 0.6rem;
+  z-index: 25;
 }
 
 .right-pill {
