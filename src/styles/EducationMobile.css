@@ -1,11 +1,19 @@
 /* Container & Layout Structure */
+
+.mobile-education-section{
+  padding: 0 20px;
+  overflow: hidden;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+}
 .mobile-education-wrapper {
   width: 100%;
   /* background-color: #0a111e; */
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  /* padding-top: 2rem; */
+  /* padding: 0px 20px 60px 20px; */
+  /* padding-left: 1rem; */
+  /* padding-right: 1rem; */
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -17,13 +25,11 @@
 }
 
 .mobile-education-title {
-  color: #ffffff;
-  font-family: system-ui, -apple-system, sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1.25rem;
-  padding-left: 0.25rem;
-  letter-spacing: 0.025em;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #00e0ff;
+  margin-top: 40px;
+  letter-spacing: 1px;
 }
 
 /* Horizontal Scroll Track Setup */
@@ -110,7 +116,7 @@
   top: 0;
   bottom: 0;
   width: 45%;
-  background-color: #1b2a47;
+  background-color: #1a2a48;
   z-index: 10;
   display: flex;
   align-items: center;

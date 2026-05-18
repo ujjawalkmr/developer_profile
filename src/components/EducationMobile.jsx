@@ -35,7 +35,7 @@ const educationData = [
 
 export default function EducationMobile() {
     return (
-        <section>
+        <section id="education" className="mobile-education-section">
             <div className="mobile-education-wrapper">
       <div className="mobile-education-container">
         <h2 className="mobile-education-title">My Education</h2>
