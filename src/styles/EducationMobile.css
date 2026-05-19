@@ -1,24 +1,13 @@
 /* Container & Layout Structure */
 
 .mobile-education-section{
-  padding: 0 20px;
+  padding: 0px 20px;
   overflow: hidden;
   text-align: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-
-}
-.mobile-education-wrapper {
-  /* width: 100%; */
- 
 }
 
 
-.mobile-education-container {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  
-}
 
 .mobile-education-title {
   font-size: 1.8rem;
@@ -31,7 +20,7 @@
   width: 260px;
   height: 4px;
   background: #7b61ff;
-  margin: 5px auto 20px;
+  margin: 5px auto 30px;
   border-radius: 5px;
 }
 
@@ -45,6 +34,8 @@
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch; /* Smooth iOS momentum scrolling */
   cursor: grab;
+    justify-content: flex-start;
+
 }
 
 .mobile-education-scroll-track:active {
@@ -61,16 +52,15 @@
 }
 
 /* Core Profile Component Card */
-.mobile-education-card {
+/* .mobile-education-card {
   position: relative;
   flex: none;
-  width: 86vw;             /* Leaves next card peaking on mobile viewports */
+  width: 86vw;            
   max-width: 500px;
   height: 220px;
   background-color: #54bcf4;
   border-radius: 35px;
   overflow: hidden;
-  /* box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6); */
   scroll-snap-align: center;
   box-sizing: border-box;
    padding-bottom: 15px;
@@ -87,13 +77,10 @@
 
 .mobile-education-card:hover {
   transform: translateY(0) scale(1);
-
-  /* z-index: 999; */
-
    box-shadow: 0 20px 40px rgba(0, 224, 255, 0.3);
 
 
-}
+} */
 
 /* Positioned Orange Badges */
 .badge-pill {
@@ -274,3 +261,112 @@
   color: #1b2a47;
   max-width: 190px;
 }
+
+
+
+
+
+
+
+/* ===============Animation========== */
+.mobile-education-card {
+  position: relative;
+   flex: 0 0 80vw;
+  width: auto;            
+  max-width: 500px;
+  height: 220px;
+  background-color: #54bcf4;
+  border-radius: 35px;
+  overflow: hidden;
+  scroll-snap-align: center;
+  box-sizing: border-box;
+   padding-bottom: 15px;
+  margin: 10px 0;
+  
+     z-index: 1;
+
+  opacity: 0;
+
+  /* BOTH animation + normal scale */
+  transform: translateX(60px) scale(1);
+
+  transition:
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 1s ease,
+    box-shadow 0.3s ease;
+
+  will-change: transform, opacity;
+  cursor: pointer;
+}
+/* SHOW ANIMATION */
+.mobile-education-card.card-show {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+/* HIDE ANIMATION */
+.mobile-education-card.card-hide {
+  opacity: 0;
+  transform: translateX(30px) scale(1);
+}
+
+/* HOVER EFFECT */
+.mobile-education-card.card-show:hover {
+  transform: translateX(0) scale(1.05);
+
+  box-shadow: 0 20px 40px rgba(0, 224, 255, 0.3);
+
+  z-index: 2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.mobile-education-title {
+  opacity: 0;
+  transform: translateX(150px);
+
+  transition:
+    transform 0.7s ease,
+    opacity 0.7s ease;
+}
+
+/* When visible */
+.mobile-education-wrapper.education-show .mobile-education-title {
+  opacity: 1;
+  transform: translateX(0);
+}
+.mobile-education-underline {
+  opacity: 0;
+  transform: translateX(150px);
+
+  transition:
+    transform 0.8s ease,
+    opacity 0.8s ease;
+}
+
+.mobile-education-wrapper.education-show .mobile-education-underline {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+
+
+.card-scrollable-content h3,
+.education-institute-name,
+.academic-years,
+.academic-desc-text {
+  text-align: left;
+}
+
