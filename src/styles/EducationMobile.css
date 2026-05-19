@@ -1,5 +1,4 @@
 /* Container & Layout Structure */
-
 .mobile-education-section{
   padding: 0px 20px;
   overflow: hidden;
@@ -307,7 +306,10 @@
 /* HIDE ANIMATION */
 .mobile-education-card.card-hide {
   opacity: 0;
-  transform: translateX(30px) scale(1);
+  transform: translateX(60px) scale(1);
+  /* Change here transform 60 to 30 px */
+  /* TODO :animation change on 311 line */
+
 }
 
 /* HOVER EFFECT */
