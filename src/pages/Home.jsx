@@ -10,11 +10,12 @@ const Education = lazy(() => import("../components/Education"));
 const Experience = lazy(() => import("../components/Experience"));
 const Contact = lazy(() => import("../components/Contact"));
 const HeroMobile = lazy(() => import("../components/HeroMobile"));
-const AboutMobile=lazy(()=>import("../components/AboutMobile"));
+const AboutMobile = lazy(() => import("../components/AboutMobile"));
 const SkillMobile = lazy(() => import("../components/SkillMobile"));
 const ServiceMobile = lazy(() => import("../components/ServiceMobile"));
 const ProjectMobile = lazy(() => import("../components/ProjectMobile"));
 const EducationMobile = lazy(() => import("../components/EducationMobile"));
+const ExperienceMobile = lazy(() => import("../components/ExperienceMobile"));
 
 /* ✅ SAFE MOBILE HOOK */
 function useIsMobile(breakpoint = 1000) {
@@ -87,12 +88,12 @@ const Home = () => {
       </Suspense>
 
       <Suspense fallback={<div className="loader">Loading Education...</div>}>
-       {isMobile ? <EducationMobile /> : <Education />}
+        {isMobile ? <EducationMobile /> : <Education />}
         {/* <Education /> */}
       </Suspense>
 
       <Suspense fallback={<div className="loader">Loading Experience...</div>}>
-        <Experience />
+        {isMobile ? <ExperienceMobile /> : <Experience />}
       </Suspense>
 
       <Suspense fallback={<div className="loader">Loading Contact...</div>}>

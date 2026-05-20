@@ -1,0 +1,306 @@
+/* Container & Layout Structure */
+.mobile-experience-section {
+    padding: 0 20px;
+    overflow: hidden;
+    text-align: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mobile-experience-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #00e0ff;
+    margin-top: 40px;
+    letter-spacing: 1px;
+}
+
+.mobile-experience-underline {
+    width: 260px;
+    height: 4px;
+    background: #7b61ff;
+    margin: 5px auto 35px;
+    border-radius: 5px;
+}
+
+/* --- TIMELINE TRACK SYSTEM --- */
+.mobile-timeline-axis-container {
+    position: relative;
+    /* max-width: 600px; */
+    /* Aligns with max-width footprint of cards */
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-left: 35px;
+    /* Creates spacing zone on the left for line and dots */
+    box-sizing: border-box;
+}
+
+/* Continuous background timeline line on the left outside of card */
+.mobile-timeline-vertical-line {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    bottom: 15px;
+    width: 3px;
+    background: linear-gradient(to bottom, #00e0ff);
+    border-radius: 2px;
+    z-index: 1;
+}
+
+/* Individual wrapper separating the point dot layout from card footprint */
+.mobile-experience-timeline-row {
+    position: relative;
+    width: 100%;
+}
+
+/* Concentric indicator dot centered exactly over the vertical tracking line */
+.mobile-timeline-node-dot {
+    position: absolute;
+    left: -31px;
+    /* Positions dot on center of timeline line */
+    top: 110px;
+    /* Centers dot vertically with respect to the 240px card height */
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #00e0ff;
+    border: 3px solid #1a2a48;
+    /* Dark border outline matching app background context */
+    box-shadow: 0 0 10px rgba(0, 224, 255, 0.6);
+    z-index: 5;
+}
+
+/* --- VERTICAL STACK LIST --- */
+.mobile-experience-vertical-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding-bottom: 40px;
+    width: 100%;
+}
+
+/* Core Component Card */
+.mobile-experience-card {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 240px;
+    background-color: #54bcf4;
+    border-radius: 28px;
+    overflow: hidden;
+    box-sizing: border-box;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    /* transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease; */
+    transition:
+     opacity 1.8s ease,
+    transform 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
+
+  transform: translateY(0) scale(0.95);
+  will-change: transform;
+  cursor: pointer;
+}
+.mobile-experience-card:hover {
+  transform: translateY(0) scale(1);
+   box-shadow: 0 20px 40px rgba(0, 224, 255, 0.3);
+
+
+}
+/* .mobile-experience-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 15px 35px rgba(0, 224, 255, 0.25);
+} */
+
+/* --- LEFT COLUMN PANEL (Sweeping Card Arc) --- */
+.mobile-experience-card-left-panel {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 40%;
+    background-color: #1a2a48;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Recreates the seamless rightward-facing curve profile */
+    clip-path: ellipse(100% 74% at 0% 50%);
+    -webkit-clip-path: ellipse(100% 74% at 0% 50%);
+}
+
+.mobile-experience-globe-outer-ring {
+    position: relative;
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    border: 4px solid #a06a3a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.mobile-experience-globe-inner-ring {
+    position: absolute;
+    top: 0.25rem;
+    left: 0.25rem;
+    right: 0.25rem;
+    bottom: 0.25rem;
+    border-radius: 50%;
+    border: 2px solid #a06a3a;
+    box-sizing: border-box;
+}
+
+.mobile-experience-globe-svg-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    object-fit: contain;
+    padding: 6px;
+    z-index: 3;
+    box-sizing: border-box;
+}
+
+.mobile-experience-globe-fallback-svg {
+    width: 55px;
+    height: 55px;
+    color: #a06a3a;
+}
+
+/* --- RIGHT COLUMN PANEL (Text Layers) --- */
+.mobile-experience-card-right-panel {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 10;
+    width: 58%;
+    padding-left: 1.5rem;
+    padding-right: 1.25rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* was space-between */
+    align-items: flex-start;
+    /* add this */
+    text-align: left;
+    /* add this */
+    color: #0d233a;
+    font-family: system-ui, -apple-system, sans-serif;
+    z-index: 5;
+    box-sizing: border-box;
+    align-self: start;
+}
+
+.mobile-experience-institute-name {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #1b2a47;
+    margin: 0 0 2px 0;
+}
+
+.mobile-experience-card-title {
+        font-size: 0.95rem;
+
+    font-weight: 700;
+    color: #0d233a;
+    margin: 0 0 4px 0;
+    line-height: 1.2;
+}
+
+.mobile-experience-years {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1b2a47;
+    margin: 0 0 10px 0;
+}
+
+.mobile-experience-desc-text {
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #0d233a;
+    margin: 0;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+/* Internal content scrollbar tweak */
+.mobile-experience-desc-text::-webkit-scrollbar {
+    width: 3px;
+}
+
+.mobile-experience-desc-text::-webkit-scrollbar-thumb {
+    background-color: rgba(13, 35, 58, 0.2);
+    border-radius: 10px;
+}
+
+/* --- DECORATIVE ORANGE BADGES --- */
+.mobile-experience-badge-pill {
+    position: absolute;
+    background: linear-gradient(to right, #ff9a44, #ff6a00);
+    border-radius: 10px;
+    z-index: 3;
+}
+
+.mobile-experience-top-pill {
+    top: 0;
+    left: 44%;
+    width: 75px;
+    height: 12px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.mobile-experience-left-pill {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 55px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.mobile-experience-right-pill {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 55px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* =====================Animation============= */
+/* HEADING */
+
+.mobile-experience-wrapper {
+  transition:
+    opacity 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Hidden state */
+.card-hide {
+  opacity: 0;
+  transform: translateX(-150px);
+}
+
+/* Visible state */
+.card-show {
+  opacity: 1;
+  transform: translateX(0);
+}
