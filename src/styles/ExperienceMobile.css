@@ -41,7 +41,7 @@
     top: 15px;
     bottom: 15px;
     width: 3px;
-    background: linear-gradient(to bottom, #00e0ff, #7b61ff);
+    background: linear-gradient(to bottom, #00e0ff);
     border-radius: 2px;
     z-index: 1;
 }
@@ -90,13 +90,26 @@
     overflow: hidden;
     box-sizing: border-box;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
-}
+    /* transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease; */
+    transition:
+     opacity 1.8s ease,
+    transform 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
 
+  transform: translateY(0) scale(0.95);
+  will-change: transform;
+  cursor: pointer;
+}
 .mobile-experience-card:hover {
+  transform: translateY(0) scale(1);
+   box-shadow: 0 20px 40px rgba(0, 224, 255, 0.3);
+
+
+}
+/* .mobile-experience-card:hover {
     transform: translateY(-4px) scale(1.01);
     box-shadow: 0 15px 35px rgba(0, 224, 255, 0.25);
-}
+} */
 
 /* --- LEFT COLUMN PANEL (Sweeping Card Arc) --- */
 .mobile-experience-card-left-panel {
@@ -182,15 +195,16 @@
 }
 
 .mobile-experience-institute-name {
-    font-size: 0.95rem;
-    font-weight: 700;
+    font-size: 1.25rem;
+    font-weight: 800;
     color: #1b2a47;
     margin: 0 0 2px 0;
 }
 
 .mobile-experience-card-title {
-    font-size: 1.25rem;
-    font-weight: 800;
+        font-size: 0.95rem;
+
+    font-weight: 700;
     color: #0d233a;
     margin: 0 0 4px 0;
     line-height: 1.2;
@@ -258,4 +272,35 @@
     height: 55px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* =====================Animation============= */
+/* HEADING */
+
+.mobile-experience-wrapper {
+  transition:
+    opacity 1.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Hidden state */
+.card-hide {
+  opacity: 0;
+  transform: translateX(-150px);
+}
+
+/* Visible state */
+.card-show {
+  opacity: 1;
+  transform: translateX(0);
 }
