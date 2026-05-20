@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import "../styles/ExperienceMobile.css";
 
-// Assuming educationData is passed as props or imported.
+// Assuming experienceData is passed as props or imported.
 // Included here as a structural reference mapping your fields.
-const educationData = [
+const experienceData = [
   {
     id: 1,
     year: "2023 April - Present",
@@ -64,7 +64,7 @@ export default function ExperienceMobile() {
 
           {/* Vertical Grid Stack */}
           <div className="mobile-experience-vertical-list">
-            {educationData.map((card) => (
+            {experienceData.map((card) => (
               <div
                 key={card.id}
                 className="mobile-experience-timeline-row"
