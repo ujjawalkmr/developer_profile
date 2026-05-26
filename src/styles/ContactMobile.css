@@ -3,42 +3,124 @@
 .mobile-contact-section {
   min-height: 100vh;
   padding: 30px;
-  background: #020b18;
+  /* background: #f1490c; */
   font-family: "Poppins", sans-serif;
   color: white;
 }
 
 /* ===== TABS ===== */
-
+.mobile-tab-main{
+  
+}
 .mobile-contact-tabs {
   display: flex;
-  border-bottom: 1px solid #37d9ff;
+  position: relative;
+  /* overflow: hidden; */
+ 
 }
 
+/* TAB BUTTON */
 .tab {
   flex: 1;
-  padding: 20px;
+  padding: 10px;
   font-size: 1.5rem;
   font-weight: 700;
   background: transparent;
   border: none;
   color: #d5f9ff;
   cursor: pointer;
+/* background:pink; */
+/* margin-bottom: 20px; */
+  position: relative;
+  z-index: 2;
+
+  transition: color 0.3s ease;
 }
 
+/* ACTIVE TEXT COLOR */
 .tab.active {
-  border: 1px solid #64f0ff;
-  border-bottom: none;
-  border-radius: 10px 10px 0 0;
-  box-shadow: 0 0 15px rgba(0, 225, 255, 0.3);
+  color: #00e1ff;
+  
 }
+
+/* 🔥 MOVING BACKGROUND INDICATOR */
+.mobile-contact-tabs::before {
+  content: "";
+  position: absolute;
+  margin-bottom: 10px;
+  top: 2px;
+  left: 0;
+
+  width: 50%;
+  height: calc(100% - 4px);
+
+  /* background: rgba(0, 225, 255, 0.15); */
+  border-radius: 10px;
+  border: 1px solid rgba(0, 225, 255, 0.3);
+  
+
+  box-shadow: 0 0 15px rgba(0, 225, 255, 0.3);
+
+  z-index: 1;
+
+  transition: transform 0.6s ease; /* THIS IS THE SLOW MOVEMENT */
+}
+
+/* MOVE INDICATOR WHEN MESSAGE TAB ACTIVE */
+.mobile-contact-tabs:has(.tab.active:nth-child(2))::before {
+  transform: translateX(100%);
+}
+/* ==================content animation========== */
+
+/* wrapper */
+.tab-animate {
+  animation-duration: 0.8s;
+  animation-timing-function: ease-in-out;
+}
+
+/* CONTACT animation */
+.tab-animate.show {
+  animation-name: fadeSlowUp;
+}
+
+/* hidden state */
+.tab-animate.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* smoother slow reveal */
+@keyframes fadeSlowUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  30% {
+    opacity: 0.2;
+  }
+
+  60% {
+    opacity: 0.6;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
 
 /* ===== CARD ===== */
 
 .mobile-contact-card {
   position: relative;
   margin-top: 25px;
-  margin-bottom: 40px;
+  margin-bottom: 80px;
   padding: 50px;
   border-radius: 35px;
   border: 2px solid rgba(85, 245, 255, 0.45);
@@ -51,6 +133,12 @@
   /* box-shadow:
     0 0 25px rgba(0, 200, 255, 0.15),
     inset 0 0 40px rgba(0, 170, 255, 0.08); */
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+}
+.mobile-contact-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 35px rgba(0, 200, 255, 0.25);
 }
 
 /* ===== SUMMARY ===== */

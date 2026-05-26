@@ -9,12 +9,13 @@ const ContactMobile = () => {
     <section className="mobile-contact-section">
 
       {/* Tabs */}
+      <div className="mobile-tab-main">
       <div className="mobile-contact-tabs">
         <button
           className={`tab ${activeTab === "contact" ? "active" : ""}`}
           onClick={() => setActiveTab("contact")}
         >
-          Contact Information
+          Contact 
         </button>
 
         <button
@@ -23,9 +24,11 @@ const ContactMobile = () => {
         >
           Send Message
         </button>
-      </div>
+      </div></div>
 
       {/* CONTACT TAB */}
+      <div className={`tab-animate ${activeTab === "contact" ? "show" : "hide"}`}>
+
       {activeTab === "contact" && (
         <div className="mobile-contact-card">
           <h3 className="summary-heading">PROFESSIONAL SUMMARY</h3>
@@ -82,9 +85,12 @@ const ContactMobile = () => {
 
           </div>
         </div>
-      )}
+        )}
+        </div>
 
       {/* MESSAGE TAB */}
+            <div className={`tab-animate ${activeTab === "message" ? "show" : "hide"}`}>
+
       {activeTab === "message" && (
         <div className="mobile-contact-card">
           <h2 className="summary-title">SEND MESSAGE</h2>
@@ -110,7 +116,8 @@ const ContactMobile = () => {
             </button>
           </form>
         </div>
-      )}
+        )}
+      </div>
     </section>
   );
 };
