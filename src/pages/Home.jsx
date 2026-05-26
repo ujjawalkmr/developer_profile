@@ -16,6 +16,7 @@ const ServiceMobile = lazy(() => import("../components/ServiceMobile"));
 const ProjectMobile = lazy(() => import("../components/ProjectMobile"));
 const EducationMobile = lazy(() => import("../components/EducationMobile"));
 const ExperienceMobile = lazy(() => import("../components/ExperienceMobile"));
+const ContactMobile = lazy(() => import("../components/ContactMobile"));
 
 /* ✅ SAFE MOBILE HOOK */
 function useIsMobile(breakpoint = 1000) {
@@ -97,7 +98,7 @@ const Home = () => {
       </Suspense>
 
       <Suspense fallback={<div className="loader">Loading Contact...</div>}>
-        <Contact />
+        {isMobile ? <ContactMobile /> : <Contact />}
       </Suspense>
     </div>
   );
