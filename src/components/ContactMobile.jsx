@@ -93,25 +93,28 @@ const ContactMobile = () => {
 
       {activeTab === "message" && (
         <div className="mobile-contact-card">
-          <h2 className="summary-title">SEND MESSAGE</h2>
+          <h2 className="summary-heading">SEND MESSAGE</h2>
 
           <form className="message-form">
             <input
               type="text"
-              placeholder="Your Name"
+                placeholder="Your Name"
+                required
             />
 
             <input
               type="email"
-              placeholder="Your Email"
+                placeholder="Your Email"
+                required
             />
 
             <textarea
               rows="6"
-              placeholder="Your Message"
+                placeholder="Your Message"
+                required
             ></textarea>
 
-            <button type="submit" className="cv-btn">
+            <button type="submit" className="mobile-send-btn">
               Send Message
             </button>
           </form>
