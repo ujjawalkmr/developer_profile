@@ -55,10 +55,17 @@
   align-items: center;
   cursor: pointer;
 
-  transform: translateX(-120px);
+  /* transform: translateX(-120px);
   opacity: 0;
-  transition: transform 0.8s ease, opacity 0.8s ease;
+  transition: transform 0.8s ease, opacity 0.8s ease; */
+ transform: translateX(-120px) scale(1);
+  opacity: 0;
 
+  transition:
+    transform 0.8s ease,
+    opacity 0.8s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
 
 
@@ -100,16 +107,22 @@
   text-decoration: underline;
 }
 
-.service-card:hover {
+/* .service-card:hover {
   transform: scale(2.05);
-  /* transform: translateX(0) translateY(-10px); */
+  this line commented
+  transform: translateX(0) translateY(-10px);
   box-shadow: 0 15px 40px rgba(124, 77, 255, 0.15);
   border-color: #00e0ff;
-}
+} */
 
 .services-container.show .service-card {
-  transform: translateX(0);
+ transform: translateX(0) scale(1);
   opacity: 1;
+}
+.services-container.show .service-card:hover {
+  transform: translateX(0) scale(1.05);
+  box-shadow: 0 15px 40px rgba(124, 77, 255, 0.15);
+  border-color: #00e0ff;
 }
 
 

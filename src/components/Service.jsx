@@ -145,20 +145,17 @@ const ServicesPage = () => {
 useEffect(() => {
   if (selectedService) {
     // prevent background scroll
-    const scrollBarWidth =
-      window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.overflow = "hidden"; // html
+      document.body.style.overflow = "hidden"; // body
+    } else {
+      document.documentElement.style.overflow = "auto";
+      document.body.style.overflow = "auto";
+    }
 
-    document.body.style.overflow = "hidden";
-    document.body.style.paddingRight = `${scrollBarWidth}px`;
-  } else {
-    document.body.style.overflow = "";
-    document.body.style.paddingRight = "";
-  }
-
-  return () => {
-    document.body.style.overflow = "";
-    document.body.style.paddingRight = "";
-  };
+    return () => {
+      document.documentElement.style.overflow = "auto";
+      document.body.style.overflow = "auto";
+    };
 }, [selectedService]);
 
 
