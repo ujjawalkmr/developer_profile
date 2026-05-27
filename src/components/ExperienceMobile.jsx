@@ -47,7 +47,7 @@ export default function ExperienceMobile() {
   return (
     <section
       ref={sectionRef}
-      id="education"
+      id="experience"
       className="mobile-experience-section"
     >
       <div

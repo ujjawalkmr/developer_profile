@@ -80,6 +80,7 @@ const ContactMobile = () => {
 
   return (
     <section
+      id="contact"
       ref={sectionRef}
       className="mobile-contact-section"
     >

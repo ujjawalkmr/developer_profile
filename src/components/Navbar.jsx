@@ -14,11 +14,14 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <div className="navbar-container">
-
           {/* Left Logo */}
           <div className="logo">
-            <img src="assets/uk_logo.png" alt="logo" />
-            <span className="logo-text">Ujjawal Kumar</span>          </div>
+            <img
+              src="assets/uk_logo.png"
+              alt="logo"
+            />
+            <span className="logo-text">Ujjawal Kumar</span>{" "}
+          </div>
 
           {/* Desktop Menu */}
           <ul className="nav-links">
@@ -42,14 +45,30 @@ const Navbar = () => {
 
       {/* Sidebar for Mobile */}
       <div className={`sidebar ${isOpen ? "active" : ""}`}>
+        <div className="mobile-logo">
+          <img
+            src="assets/uk_logo.png"
+            alt="mobile-logo"
+          />
+        </div>
         <ul>
           <li onClick={() => scrollToSection("home")}>Home</li>
           <li onClick={() => scrollToSection("about")}>About</li>
           <li onClick={() => scrollToSection("skills")}>Skills</li>
-          <li onClick={() => setIsOpen(false)}>Projects</li>
-          <li onClick={() => setIsOpen(false)}>Contact</li>
+          <li onClick={() => scrollToSection("service")}>Service</li>
+          <li onClick={() => scrollToSection("projects")}>Projects</li>
+          <li onClick={() => scrollToSection("education")}>Education</li>
+          <li onClick={() => scrollToSection("experience")}>Experience</li>
+          <li onClick={() => scrollToSection("contact")}>Contact</li>
         </ul>
       </div>
+      {/* Overlay */}
+      {isOpen && (
+        <div
+          className="overlay"
+          onClick={() => setIsOpen(false)}
+        ></div>
+      )}
     </>
   );
 };

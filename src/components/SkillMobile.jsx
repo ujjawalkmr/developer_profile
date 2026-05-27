@@ -165,6 +165,7 @@ const SkillMobile = () => {
 
   return (
     <section
+      id="skills"
       ref={sectionRef}
       className="mobile-skills-container "
     >
