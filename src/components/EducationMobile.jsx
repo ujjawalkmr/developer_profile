@@ -64,7 +64,6 @@ export default function EducationMobile() {
   }, []);
   return (
     <section
-      id="education"
       ref={sectionRef}
       id="education"
       className="mobile-education-section"
