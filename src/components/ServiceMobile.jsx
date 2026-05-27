@@ -137,6 +137,7 @@ const ServiceMobile = () => {
 
     return (
       <section
+        id="service"
         ref={sectionRef}
         className="mobile-services-section"
       >

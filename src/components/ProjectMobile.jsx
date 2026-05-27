@@ -286,6 +286,7 @@ useEffect(() => {
 }, []);
   return (
     <section
+      id="projects"
       ref={sectionRef}
       className="mobile-project-section"
     >

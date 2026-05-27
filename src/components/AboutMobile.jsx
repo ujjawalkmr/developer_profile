@@ -32,7 +32,9 @@ const AboutMobile = () => {
 
 
   return (
-    <section className="about-mobile" ref={sectionRef}>
+    <section
+      id="about"
+      className="about-mobile" ref={sectionRef}>
       
       <div className={`about-mobile-wrapper ${show ? "show" : ""}`}>
         {/* BACK LAYER (blurred background effect) */}
