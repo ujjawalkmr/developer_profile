@@ -225,14 +225,16 @@ const ProjectPage = () => {
   // Prevent background scroll when modal is open
   useEffect(() => {
     if (selectedCategory) {
-      document.body.style.overflow = "hidden";  // disable background scroll
+      document.documentElement.style.overflow = "hidden"; // html
+      document.body.style.overflow = "hidden"; // body
     } else {
-      document.body.style.overflow = "";        // restore scroll
+      document.documentElement.style.overflow = "auto";
+      document.body.style.overflow = "auto";
     }
 
-    // Cleanup in case component unmounts
     return () => {
-      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "auto";
+      document.body.style.overflow = "auto";
     };
   }, [selectedCategory]);
 
