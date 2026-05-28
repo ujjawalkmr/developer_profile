@@ -175,11 +175,11 @@ const Hero = () => {
           </div>
 
           <div className={`badge badge-left ${show ? "fade-up delay-1" : ""}`}>
-            30+ <br /> Clients
+            4+ <br /> Experience
           </div>
 
           <div className={`badge badge-right ${show ? "fade-up delay-2" : ""}`}>
-            130+ <br /> Projects
+            10+ <br /> Projects
           </div>
 
           <div className="social-icons">

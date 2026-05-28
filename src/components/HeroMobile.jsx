@@ -44,11 +44,11 @@ const HeroMobile = () => {
                         <img src={herImage} alt="developer" className="hero-img" />
                     </div>
                     <div className="info-box left-box">
-                        <span>5+ Years</span>
+                        <span>4+ Years</span>
                         <p>Experience</p>
                     </div>
                     <div className="info-box right-box">
-                        <span>100+</span>
+                        <span>10+</span>
                         <p>Projects</p>
                     </div>
                 </div>
