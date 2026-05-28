@@ -6,6 +6,17 @@ const HeroMobile = () => {
     const heroRef = useRef(null);
     const herImage = "/assets/uk.jpeg";
 
+
+
+    const downloadCV = () => {
+        const link = document.createElement("a");
+        link.href = "/assets/UjjawalKumar@.pdf"; // file path
+        link.download = "Ujjawal_CV.pdf"; // file name after download
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
@@ -61,7 +72,7 @@ const HeroMobile = () => {
                 {/* --- Buttons: Animates from Right (with extra delay) --- */}
                 <div className={`mobile-buttons ${show ? "animate-right" : ""}`} style={{ transitionDelay: '0.2s' }}>
                     <button className="mobile-btn-primary">Get In Touch →</button>
-                    <button className="mobile-btn-outline">Download CV</button>
+                    <button className="mobile-btn-outline" onClick={downloadCV}>Download CV</button>
                 </div>
             </div>
         </section>
